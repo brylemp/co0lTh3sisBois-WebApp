@@ -1,6 +1,7 @@
 body {
     background-image: url(../images/loginBG.png);
-    background-size: cover;                      /* <------ */
+    background-size: cover;                
+    background-repeat: no-repeat;
 }
 
 .spacer1{
