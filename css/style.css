@@ -3,44 +3,53 @@ body {
     background-size: cover;                      /* <------ */
 }
 
+.spacer1{
+    /* border: solid aqua; */
+    width: 100%;
+    margin-top: 10%;
+}
+
+@media screen and (min-width: 1600px) {
+    .spacer1{
+        margin-top: 17%;
+    }
+}
+
 .loginImage img{
     /* border: solid aqua; */
-    top: 20%;
-    left: 37.5%;
     position: absolute;
-    width: 25%;
+    left: 25%;
+    width: 50%;
     opacity: 90%;
 }
 
-.loginField{
-    width: 25%;
-    position: absolute;
-    /* border: solid aqua; */
-    top: 55%;
-    left: 37.5%;
+@media screen and (min-width: 1920px) {
+    .loginImage img{
+        left: 17.5%;
+        width: 65%;
+    }
 }
 
-@media screen and (max-width: 1920px) {
-    .loginField{
-        padding-left: 6%;
-    }
-
+.loginField{
+    width: 100%;
+    position: absolute;
+    /* border: solid aqua; */
+    padding-top: 35%;
+    padding-left: 35%;
+}
 
 @media screen and (min-width: 1920px) {
     .loginField{
-        /* border: solid brown; */
-        padding-left: 7.5%;
+        padding-top: 45%;
     }
 }
 
 .loginText{
     /* border: solid aqua; */
-    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .loginButton{
     /* border: solid aqua; */
-    width: 70%;
-    padding-top: 10%;
-    padding-left: 17.5%;
+    width: 36%;
 } 

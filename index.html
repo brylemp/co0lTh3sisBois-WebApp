@@ -13,19 +13,33 @@
   </head>
   <body>
     <div class="container">
-        <div class="loginImage">
-            <image src="../images/loginBox.png"></image>
+        <div class="row">
+            <div class="spacer1"></div>
         </div>
-        <div class="loginField">
-            <div class="loginText">
-                <input type="text" placeholder="Username" name="UNAME" value="">
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-sm-2" style="border: solid aqua"></div> -->
+            <div class="col-sm-2"></div>
+            <!-- <div class="col-md-8" style="border: solid brown"> -->
+                <div class="col-md-8">
+                <div class="loginImage">
+                    <image class="mx-auto d-block" src="../images/loginBox.png"></image>
+                </div>
+                <div class="loginField">
+                    <div class="loginText">
+                        <input type="text" placeholder="Username" name="UNAME" value="">
+                    </div>
+                    <div class="loginText">
+                        <input type="password" placeholder="Password" name="PWORD" value="">
+                    </div>
+                    <div class="loginButton">
+                        <div class="text-center"><input type="button" class="btn btn-light text-center" value="Login"></div>
+                    </div>
+                </div>
             </div>
-            <div class="loginText">
-                <input type="password" placeholder="Password" name="PWORD" value="">
-            </div>
-            <div class="loginButton">
-                <input type="button" class="btn btn-light" value="Login">
-            </div>
+            <!-- <div class="col-sm-2"style="border: solid aqua"></div> -->
+            <div class="col-sm-2"></div>
         </div>
     </div>
     
