@@ -3,13 +3,6 @@ body {
     background-size: cover;                      /* <------ */
 }
 
-.loginTitle{
-    text-align: center;
-    padding-top: 1%;
-    font-size: 50px;
-    font-family: 'Times New Roman', Times, serif;
-}
-
 .loginImage img{
     /* border: solid aqua; */
     top: 20%;
@@ -19,22 +12,35 @@ body {
     opacity: 90%;
 }
 
-.loginBox{
+.loginField{
     width: 25%;
     position: absolute;
     /* border: solid aqua; */
     top: 55%;
     left: 37.5%;
-    padding-left: 6%;
+}
+
+@media screen and (max-width: 1920px) {
+    .loginField{
+        padding-left: 6%;
+    }
+
+
+@media screen and (min-width: 1920px) {
+    .loginField{
+        /* border: solid brown; */
+        padding-left: 7.5%;
+    }
 }
 
 .loginText{
+    /* border: solid aqua; */
     padding-top: 5%;
 }
 
 .loginButton{
     /* border: solid aqua; */
     width: 70%;
-    padding-top: 15%;
-    padding-left: 20%;
+    padding-top: 10%;
+    padding-left: 17.5%;
 } 
