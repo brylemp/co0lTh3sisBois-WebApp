@@ -40,6 +40,7 @@ body {
         /* border: solid blue; */
         margin-top: 17%;
     }
+
 }
 
 @media (min-width: 992px) and (max-width: 1599px) { /* 992 - 1599 */
@@ -47,6 +48,14 @@ body {
         width: 100%;
         /* border: solid aqua; */
         margin-top: 14%;
+    }
+
+    .loginField{
+        padding-top: 25%;
+    }
+
+    .loginButton{
+        padding-bottom: 5%;
     }
 }
 
