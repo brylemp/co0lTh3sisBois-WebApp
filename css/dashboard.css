@@ -1,0 +1,79 @@
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+.wrapper .sidebar{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: rgb(67, 99, 56);
+    padding-top: 20px;
+}
+
+.wrapper .sidebar h1{
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+.wrapper .sidebar h2{
+    text-align: center;
+    margin-top: -5%;
+    margin-bottom: 15%;
+    font-size: 15px;
+    color: white;
+}
+
+.wrapper .sidebar ul li{
+    text-align: center;
+    list-style: none;
+    padding-bottom: 12%;
+    margin-left: -30%;
+    /* padding: 15px; */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrapper .sidebar ul li a{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.wrapper .sidebar ul li a:hover{
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+.wrapper .sidebar ul li:hover{
+    background-color: rgba(255, 255, 255, 0.010);
+}
+
+.wrapper .main{
+    /* border: 1px solid aqua; */
+    width: 100%;
+    margin-left: 200px;
+}
+
+.wrapper table{
+    /* border: 1px solid aqua; */
+    width: 70%;
+    margin-top: 10%;
+    margin-left: 80px;
+}
+
+.wrapper td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+.wrapper tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+.wrapper .main .title{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
