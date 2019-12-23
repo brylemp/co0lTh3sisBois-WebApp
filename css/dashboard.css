@@ -28,7 +28,8 @@
 .wrapper .sidebar ul li{
     text-align: center;
     list-style: none;
-    padding-bottom: 12%;
+    /* padding-bottom: 11%; */
+    margin-bottom: 10%;
     margin-left: -30%;
     /* padding: 15px; */
     border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -37,6 +38,10 @@
 
 .wrapper .sidebar ul li a{
     color: rgba(255, 255, 255, 0.5);
+}
+
+.wrapper .sidebar ul li.active a{
+    color: rgba(255, 255, 255, 1);
 }
 
 .wrapper .sidebar ul li a:hover{
@@ -56,24 +61,37 @@
 
 .wrapper table{
     /* border: 1px solid aqua; */
-    width: 70%;
-    margin-top: 10%;
+    width: 85%;
+    margin-top: 2%;
     margin-left: 80px;
 }
 
 .wrapper td, th {
     border: 1px solid #dddddd;
     text-align: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
   }
+
+.wrapper th:last-child, td:last-child {
+    width: 10%;
+    border: none;
+    background-color: white ;
+    padding-left: 3%;
+}
   
 .wrapper tr:nth-child(even) {
     background-color: #dddddd;
-  }
+}
 
 .wrapper .main .title{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 50px;
+}
+
+.wrapper .main .date{
+    /* margin-top: 5%; */
+    margin-left: 80px;
+    font-size: 15px;
 }
