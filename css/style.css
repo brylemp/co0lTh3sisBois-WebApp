@@ -2,55 +2,99 @@ body {
     background-image: url(../images/loginBG.png);
     background-size: cover;                
     background-repeat: no-repeat;
+    background-position: center top;
 }
 
-.spacer1{
-    /* border: solid aqua; */
-    width: 100%;
-    margin-top: 10%;
-}
-
-@media screen and (min-width: 1600px) {
-    .spacer1{
-        margin-top: 17%;
-    }
-}
-
-.loginImage img{
-    /* border: solid aqua; */
-    position: absolute;
-    left: 25%;
-    width: 50%;
-    opacity: 90%;
-}
-
-@media screen and (min-width: 1920px) {
-    .loginImage img{
-        left: 17.5%;
-        width: 65%;
-    }
+.loginImage{
+    background-image: url(../images/loginBox.png); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .loginField{
+    /* border: solid blue; */
     width: 100%;
-    position: absolute;
-    /* border: solid aqua; */
-    padding-top: 35%;
-    padding-left: 35%;
-}
-
-@media screen and (min-width: 1920px) {
-    .loginField{
-        padding-top: 45%;
-    }
+    position: relative;
+    padding-top: 50%;
 }
 
 .loginText{
-    /* border: solid aqua; */
+    /* border: solid red; */
+    width: 100%;
+    height: 50px;
     padding-bottom: 5%;
+    text-align: center;
 }
 
 .loginButton{
     /* border: solid aqua; */
-    width: 36%;
-} 
+    width: 100%;
+    padding-bottom: 15%;
+}
+
+
+@media (min-width: 1600px) { /* Big Up */
+    .spacer1{
+        width: 100%;
+        /* border: solid blue; */
+        margin-top: 17%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1599px) { /* 992 - 1599 */
+    .spacer1{
+        width: 100%;
+        /* border: solid aqua; */
+        margin-top: 14%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) { /* 768 - 850 */
+    .spacer1{
+        width: 100%;
+        /* border: solid green; */
+        margin-top: 14%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) { /* 576 - 767 */
+    .spacer1{
+        width: 100%;
+        /* border: solid red; */
+        margin-top: 15%;
+    }
+
+    .loginField{
+        padding-top: 40%;
+    }
+
+    .loginText{
+        margin-bottom: -1%;
+    }
+
+    .loginButton{
+        margin-bottom: 2%;
+    }
+}
+
+@media (max-width: 575px) { /* mobile! */
+    .spacer1{
+        width: 100%;
+        /* border: solid red; */
+        margin-top: 10%;
+    }
+
+    .loginField{
+        padding-top: 30%;
+    }
+
+    .loginText{
+        margin-bottom: -2%;
+    }
+
+    .loginButton{
+        padding-bottom: 5%;
+    }
+
+}
