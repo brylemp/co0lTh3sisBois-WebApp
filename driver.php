@@ -17,7 +17,7 @@
             <h1>Dela Cruz, Juan</h1>
             <h2>BURSAR</h2>
             <ul>
-                <li><a href="/dashboard.html">ALL</a></li>
+                <li><a href="dashboard.php">ALL</a></li>
                 <li class="active"><a href="#">Driver 1</a></liclass="active">
                 <li><a href="#">Driver 2</a></li>
                 <li><a href="#">Driver 3</a></li>

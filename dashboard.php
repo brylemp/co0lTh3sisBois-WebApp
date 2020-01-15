@@ -17,8 +17,8 @@
             <h1>Dela Cruz, Juan</h1>
             <h2>BURSAR</h2>
             <ul>
-                <li class="active"><a href="/dashboard.html">ALL</a></li>
-                <li><a href="/driver.html">Driver 1</a></li>
+                <li class="active"><a href="dashboard.php">ALL</a></li>
+                <li><a href="driver.php">Driver 1</a></li>
                 <li><a href="#">Driver 2</a></li>
                 <li><a href="#">Driver 3</a></li>
                 <li><a href="#">Driver 4</a></li>
@@ -32,7 +32,48 @@
             </ul>
         </div>
         <div class="main">
-            <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "ourserver";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if($conn->connect_error) {
+          die("Connection failed: ".$conn->connect_error);
+        } 
+        else{
+          echo '<div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
+          <div class="date"><input type="date"></div>';
+        }
+        $sql = "SELECT * FROM DriverInformation";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          echo "<table>";
+          echo "<tr>
+                  <th>DRIVER ID</th>
+                  <th>TOTAL AMOUNT</th>
+                  <th>STATUS</th>
+                  <th>COLLECTIBLES</th>
+                  <th></th>
+                </tr>";
+          while($row = $result->fetch_assoc()) {
+              echo "<tr><td>" .$row["Driver_ID"] ."</td>";
+              echo "<td>" .$row["Total_Amount"] ."</td>";
+              echo "<td>" .$row["Driver_Status"] ."</td>";
+              echo "<td>" .$row["Collectibles"] ."</td>";
+              echo '<td><button type="button" class="btn btn-success">Disburse</button></td>
+              </tr>';
+          }
+          echo "</table>";    
+        } 
+        else {
+            echo "No record";
+        }
+        ?>
+            <!-- <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
             <div class="date"><input type="date"></div>
             <table>
                 <tr>
@@ -41,8 +82,8 @@
                   <th>STATUS</th>
                   <th>COLLECTIBLES</th>
                   <th></th>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                   <td>15101869</td>
                   <td>1700</td>
                   <td>Not Disbursed</td>
@@ -112,7 +153,7 @@
                     <td>10</td>
                     <td><button type="button" class="btn btn-success">Disburse</button></td>
                   </tr>
-              </table>
+              </table> -->
         </div>
 
     </div>
