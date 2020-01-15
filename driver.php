@@ -52,7 +52,7 @@
                 }
                 
             ?>
-            <li><a href="#">LOGOUT</a></li>
+            <li><a href="index.php">LOGOUT</a></li>
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->
