@@ -99,14 +99,12 @@
     background-color: #dddddd;
 }
 
+.wrapper tr:last-child td {
+    background-color: white;
+}
+
 .wrapper .main .title{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 50px;
-}
-
-.wrapper .main .date{
-    /* margin-top: 5%; */
-    margin-left: 80px;
-    font-size: 15px;
 }
