@@ -16,11 +16,9 @@
     $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `Password`, `UserType`) VALUES('$fname','$lname','$user','$hashed_password','$type')";
     // $result = $conn->query($sql) or die($conn->error);
     if($conn->query($sql)){
-        echo "New record created successfully";
         header("Refresh:0; url=dashboard.php"); 
     }
     else{
         header("Refresh:0; url=createuserpage.php"); 
-        // echo $conn->error;
     }
 ?>

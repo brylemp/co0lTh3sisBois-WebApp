@@ -71,15 +71,68 @@
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->
-        <form action="createuserprocess.php" method="POST"> 
+        <!-- <form action="createuserprocess.php" method="POST"> 
             <input type="text" placeholder="First Name" name="firstname" required="required">
             <input type="text" placeholder="Last Name" name="lastname" required="required">
             <input type="text" placeholder="ID Number" name="username" required="required">
             <input type="text" placeholder="User Type" name="usertype" required="required">
             <input type="password" placeholder="Password" name="password" required="required">
             <div class="text-center"><input type="submit" class="btn btn-light text-center" value="Login" id="button1"></div>
-        </formm>
+        </form> -->
+        <!-- Material form register -->
+    <div class="register">
+        <div class="card">
+            <h5 class="card-header info-color white-text text-center py-4">
+                <strong>Create User</strong>
+            </h5>
+            <!--Card content-->
+            <div class="card-body px-lg-5 pt-0">
+                <!-- Form -->
+                <form class="text-center" style="color: #757575;" action="createuserprocess.php" method="POST">
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- First name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormFirstName" class="form-control" name="firstname" required="required">
+                                <label for="materialRegisterFormFirstName">First name</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormFirstName" class="form-control" name="lastname" required="required">
+                                <label for="materialRegisterFormFirstName">Last name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- E-mail -->
+                    <div class="md-form mt-0">
+                        <input type="text" id="materialRegisterFormFirstName" class="form-control" name="username" required="required">
+                        <label for="materialRegisterFormFirstName">ID Number</label>
+                    </div>
+                    <!-- Password -->
+                    <div class="md-form">
+                        <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required">
+                        <label for="materialRegisterFormPassword">Password</label>
+                    </div>
+                    <select name="usertype">
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+
+
+                    <!-- Sign up button -->
+                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Create</button>
+                </form>
+                <!-- Form -->
+            </div>
+        </div>
+    </div>
+    
+<!-- Material form register -->
     </div>
 </div>
 </body>
 </html>
+
+
