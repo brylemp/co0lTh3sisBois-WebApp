@@ -76,35 +76,43 @@
     </div>
     <div class="main"> <!-- MAIN AREA -->
         <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
+        <div class='outeroutertable'>
         <?php
             $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
             $result = $conn->query($sql);
             
             if ($result->num_rows > 0) {
-                echo "<table>
+                echo "<div class='fakeoutertable'><table>
                         <tr>
                             <th>DATE</th>
                             <th>TOTAL AMOUNT</th>
                             <th>STATUS</th>
                             <th></th>
-                        </tr>";
+                        </tr>
+                        </table></div>
+                        <div class='outertable'>
+                        <table>";
                 while($row = $result->fetch_assoc()) {
                     echo "<tr><td>" .$row["Date"] ."</td>";
                     echo "<td>" .$row["Total_Amount"] ."</td>";
                     echo "<td>" .$row["Driver_Status"] ."</td>";
-                    echo '<td><button type="button" class="btn btn-success">Disburse</button></td></tr>';
+                    echo "<td><button type='button' class='btn btn-success'>Disburse</button></td></tr>";
                 }
-                echo "<tr>
+                echo "</table></div>
+                    <div class='fakeoutertable'>
+                    <table>    
+                    <tr>
                         <td></td>
                         <td>COLLECTIBLES:</td>
                         <td>150</td>
                         <td></td>
-                    </tr></table>";
+                    </tr></table></div>";
             } 
             else {
                 echo "No record";
             }
         ?>
+        </div>
     </div>
 </div>
 </body>
