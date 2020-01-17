@@ -14,10 +14,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/newdrive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
+
 <div class="wrapper">
     <div class="sidebar"> <!-- SIDEBAR -->
         <?php 
@@ -29,6 +30,7 @@
             echo $_SESSION['S_UserType']; 
             echo "</h2>";
         ?>
+
         <ul>
             <li><a href="dashboard.php">All</a></li>
             <?php
@@ -43,7 +45,7 @@
                     echo '<div class="title">FAIL</div>';
                     die("Connection failed: ".$conn->connect_error);
                 } 
-            
+
                 $sql = "SELECT * FROM DriverInformation";
                 $result = $conn->query($sql);
 
@@ -60,51 +62,23 @@
                     echo "No record";
                 }
 
-                $selected_driver = 0; //Prevent Errors
-                if (isset($_GET['driver']) ) { //Get value from line 40
-                    $selected_driver = $_GET['driver']; // Get Driver Name
-                }
-
                 if($_SESSION['S_UserType']=='Admin'){
-                    echo '<li><a href="createuserpage.php">Create Account</a></li>';
+                    echo '<li><a href="logout.php">Create Account</a></li>';
                 }
-
-                echo '<li><a href="logout.php">LOGOUT</a></li>';
                 
+                echo '<li><a href="logout.php">LOGOUT</a></li>';
             ?>
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->
-        <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
-        <?php
-            $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                echo "<table>
-                        <tr>
-                            <th>DATE</th>
-                            <th>TOTAL AMOUNT</th>
-                            <th>STATUS</th>
-                            <th></th>
-                        </tr>";
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" .$row["Date"] ."</td>";
-                    echo "<td>" .$row["Total_Amount"] ."</td>";
-                    echo "<td>" .$row["Driver_Status"] ."</td>";
-                    echo '<td><button type="button" class="btn btn-success">Disburse</button></td></tr>';
-                }
-                echo "<tr>
-                        <td></td>
-                        <td>COLLECTIBLES:</td>
-                        <td>150</td>
-                        <td></td>
-                    </tr></table>";
-            } 
-            else {
-                echo "No record";
-            }
-        ?>
+        <form action="createuserprocess.php" method="POST"> 
+            <input type="text" placeholder="First Name" name="firstname" required="required">
+            <input type="text" placeholder="Last Name" name="lastname" required="required">
+            <input type="text" placeholder="ID Number" name="username" required="required">
+            <input type="text" placeholder="User Type" name="usertype" required="required">
+            <input type="password" placeholder="Password" name="password" required="required">
+            <div class="text-center"><input type="submit" class="btn btn-light text-center" value="Login" id="button1"></div>
+        </formm>
     </div>
 </div>
 </body>

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if( !isset($_SESSION["S_authorized"]) ){
+        header("Refresh:0; url=index.php");
+        exit();
+    }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,10 +18,19 @@
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
+
 <div class="wrapper">
     <div class="sidebar"> <!-- SIDEBAR -->
-        <h1>Dela Cruz, Juan</h1>
-        <h2>BURSAR</h2>
+        <?php 
+            echo "<h1>";
+            echo $_SESSION['S_lastname'].",".$_SESSION['S_firstname']; 
+            echo "</h1>";
+
+            echo "<h2>";
+            echo $_SESSION['S_UserType']; 
+            echo "</h2>";
+        ?>
+
         <ul>
             <li><a href="dashboard.php">All</a></li>
             <?php
@@ -45,8 +61,13 @@
                 else {
                     echo "No record";
                 }
+
+                if($_SESSION['S_UserType']=='Admin'){
+                    echo '<li><a href="createuserpage.php">Create Account</a></li>';
+                }
+                
+                echo '<li><a href="logout.php">LOGOUT</a></li>';
             ?>
-            <li><a href="index.php">LOGOUT</a></li>
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->

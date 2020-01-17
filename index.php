@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,11 +29,11 @@
                 <div class="loginImage">  
                     <div class="loginField">
                         <div class="loginText">
-                            <form id="LOGINFORM" action="dashboard.php#all" method="GET"> <!--temporary ang get-->
-                                <input type="text" placeholder="Username" name="UNAME" value="">
+                            <form id="LOGINFORM" action="login.php" method="POST"> <!--temporary ang get-->
+                                <input type="text" placeholder="ID Number" name="username" required="required">
                         </div>
                         <div class="loginText">
-                            <input type="password" placeholder="Password" name="PWORD" value="">
+                            <input type="password" placeholder="Password" name="password" required="required">
                         </div>
                         <div class="loginButton">
                                 <div class="text-center"><input type="submit" class="btn btn-light text-center" value="Login" id="button1"></div>
