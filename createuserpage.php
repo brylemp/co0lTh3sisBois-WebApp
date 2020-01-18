@@ -30,7 +30,7 @@
             echo "</h2>";
         ?>
         <ul>
-            <li><a href="dashboard.php">All</a></li>
+            <li><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
                 $servername = "localhost";
                 $username = "root";
@@ -60,7 +60,7 @@
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
-                    echo '<li><a href="logout.php">Create Account</a></li>';
+                    echo '<li><a href="createuserpage.php">Create Account</a></li>';
                 }
                 
                 echo '<li><a href="logout.php">LOGOUT</a></li>';

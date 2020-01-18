@@ -1,6 +1,7 @@
 <?php
+    phpinfo();
     session_start();
-    $servername = "127.0.0.1";
+    $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "ourserver"; 
@@ -13,6 +14,6 @@
     // $type=$_POST["usertype"];
     $hashed_password=password_hash('123', PASSWORD_DEFAULT);
 
-    $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `Password`, `UserType`) VALUES('Test','123','151012','$hashed_password','User')";
+    $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `Password`, `UserType`) VALUES('Bryle','Patalinghug','15101869','$hashed_password','Admin')";
     $result = $conn->query($sql) or die($conn->error);
 ?>

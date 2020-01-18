@@ -120,3 +120,13 @@ td, th{
     font-family: 'Times New Roman', Times, serif;
     font-size: 50px;
 }
+
+.wrapper .main .outeroutertable .toparea{
+    /* border: 1px solid black; */
+    display: flex;
+    margin: 0 auto;
+    width: 81%;
+    text-align: left;
+    padding-top: 35px; 
+    padding-bottom: 35px; 
+}

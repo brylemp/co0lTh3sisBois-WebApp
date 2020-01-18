@@ -122,7 +122,33 @@ td, th{
 }
 
 .wrapper .main .date{
-    /* margin-top: 5%; */
-    margin-left: 80px;
-    font-size: 15px;
+    /* border: 1px solid black; */
+    padding-top: 4px;
+    /* width: 15%; */
+    /* margin-right: 200px; */
+}
+
+.wrapper .main .buttonn{
+    /* border: 1px solid black; */
+    margin-left: 1%;
+}
+
+.wrapper .main .outeroutertable .toparea{
+    /* border: 1px solid black; */
+    display: flex;
+    margin: 0 auto;
+    width: 81%;
+    text-align: left;
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+}
+
+.wrapper .main .outeroutertable .NoRecord{
+    /* border: 1px solid black; */
+    margin: 0 auto;
+    width: 81%;
+    text-align: center;
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    font-size: 30px;
 }

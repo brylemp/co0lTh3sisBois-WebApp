@@ -20,7 +20,7 @@
         $_SESSION['S_lastname']=$row['LName'];
         $_SESSION['S_UserType']=$row['UserType'];
         $_SESSION['S_authorized'] = TRUE;
-        header("Refresh:0; url=dashboard.php"); 
+        header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j')); 
         exit();
     }
     else{

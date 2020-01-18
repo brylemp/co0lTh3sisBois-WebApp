@@ -1,5 +1,12 @@
 <?php
     session_start();
+
+    if (!isset($_GET['date']) ) { //Get value from line
+        $selected_date = $_GET['searchdate']; // Get Date
+    }
+    else{
+        $selected_date = date('Y-m-j');
+    }
     if( !isset($_SESSION["S_authorized"]) ){
         header("Refresh:0; url=index.php");
         exit();
@@ -30,7 +37,7 @@
             echo "</h2>";
         ?>
         <ul>
-            <li><a href="dashboard.php">All</a></li>
+            <li><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
                 $servername = "localhost";
                 $username = "root";
@@ -70,10 +77,19 @@
     </div>
     <div class="main"> <!-- MAIN AREA -->
         <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
-        <!-- <div class="date"><input type="date"></div> -->
         <div class='outeroutertable'>
+            <div class='toparea'>
+                <div class="date">
+                    <form action="dashboard.php" type="GET">
+                        <input type="date" name="searchdate" value="<?php echo $selected_date;?>">
+                </div>   
+                <div class="buttonn">
+                        <button type="submit" class="btn btn-success">Load</button>
+                    </form>
+                </div>
+            </div>
         <?php
-            $sql = "SELECT * FROM DriverInformation";
+            $sql = "SELECT * FROM DriverInformation WHERE Date='$selected_date' ORDER BY Driver_ID DESC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -99,7 +115,7 @@
                 echo "</table></div>";    
             } 
             else {
-                echo "No record";
+                echo "<div class='NoRecord'>No record found</div>";
             }
         ?>
         </div>

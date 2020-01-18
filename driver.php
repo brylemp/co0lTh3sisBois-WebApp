@@ -30,7 +30,7 @@
             echo "</h2>";
         ?>
         <ul>
-            <li><a href="dashboard.php">All</a></li>
+            <li><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
                 $servername = "localhost";
                 $username = "root";
@@ -77,6 +77,7 @@
     <div class="main"> <!-- MAIN AREA -->
         <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
         <div class='outeroutertable'>
+        <div class='toparea'></div>
         <?php
             $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
             $result = $conn->query($sql);
