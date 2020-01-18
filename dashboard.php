@@ -72,20 +72,24 @@
     </div>
     <div class="main"> <!-- MAIN AREA -->
         <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
-        <div class="date"><input type="date"></div>
+        <!-- <div class="date"><input type="date"></div> -->
+        <div class='outeroutertable'>
         <?php
             $sql = "SELECT * FROM DriverInformation";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                echo "<table>
+                echo "<div class='fakeoutertable'><table>
                         <tr>
-                        <th>DRIVER ID</th>
-                        <th>TOTAL AMOUNT</th>
-                        <th>STATUS</th>
-                        <th>COLLECTIBLES</th>
-                        <th></th>
-                    </tr>";
+                            <th>DRIVER ID</th>
+                            <th>TOTAL AMOUNT</th>
+                            <th>STATUS</th>
+                            <th>COLLECTIBLES</th>
+                            <th></th>
+                    </tr>
+                    </table></div>
+                    <div class='outertable'>
+                    <table>";
                 while($row = $result->fetch_assoc()) {
                     echo "<tr><td>" .$row["Driver_ID"] ."</td>";
                     echo "<td>" .$row["Total_Amount"] ."</td>";
@@ -94,12 +98,13 @@
                     echo '<td><button type="button" class="btn btn-success">Disburse</button></td>
                     </tr>';
                 }
-                echo "</table>";    
+                echo "</table></div>";    
             } 
             else {
                 echo "No record";
             }
         ?>
+        </div>
     </div>
 </div>
 </body>

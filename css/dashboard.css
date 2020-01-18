@@ -1,3 +1,7 @@
+td, th{
+    width: 15%;
+}
+
 .wrapper{
     display: flex;
     position: relative;
@@ -54,22 +58,44 @@
 }
 
 .wrapper .main{
-    border: 1px solid aqua;
+    /* border: 1px solid red; */
     width: 100%;
     height: 100vh;
     margin-left: 200px;
 }
 
-.wrapper .main .register{
+.wrapper .outeroutertable{
+    /* border: 1px solid green; */
+    width: 100%;
+    height: 80%; 
+    /* margin-left: 100px; */
+}
+
+.wrapper .outertable{
     /* border: 1px solid aqua; */
-    width: 30%;
+    margin: 0 auto;
+    width: 90%;
+    height: 90%; 
+    overflow: auto;
+    overflow-y: overlay;
+}
+
+.wrapper .fakeoutertable{
+    /* border: 1px solid red; */
+    padding-right: 0px;
+    margin: 0 auto;
+    width: 90%;
+    height: 30px; 
+}
+
+.wrapper .fakeoutertable tr:last-child td{  
+    border: none;
 }
 
 .wrapper table{
-    /* border: 1px solid aqua; */
-    width: 85%;
-    margin-top: 2%;
-    margin-left: 80px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    width: 90%;
 }
 
 .wrapper td, th {
@@ -80,10 +106,9 @@
   }
 
 .wrapper th:last-child, td:last-child {
-    width: 10%;
     border: none;
+    padding-left: 0px;
     background-color: white ;
-    padding-left: 3%;
 }
   
 .wrapper tr:nth-child(even) {
