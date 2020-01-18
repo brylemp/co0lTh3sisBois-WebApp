@@ -1,7 +1,11 @@
 <?php
     session_start();
-    if( !isset($_SESSION["S_authorized"]) ){
+    if(!isset($_SESSION["S_authorized"])){
         header("Refresh:0; url=index.php");
+        exit();
+    }
+    elseif ($_SESSION["S_UserType"] != 'Admin') {
+        header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
         exit();
     }
 ?>

@@ -1,11 +1,12 @@
 <?php
     session_start();
-
+    error_reporting(E_ALL ^ E_NOTICE);
+    $selected_date = date('Y-m-j');
     if (!isset($_GET['date']) ) { //Get value from line
         $selected_date = $_GET['searchdate']; // Get Date
     }
     else{
-        $selected_date = date('Y-m-j');
+        header("Refresh:0; url=index.php");
     }
     if( !isset($_SESSION["S_authorized"]) ){
         header("Refresh:0; url=index.php");

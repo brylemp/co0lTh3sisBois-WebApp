@@ -110,7 +110,7 @@
                     </tr></table></div>";
             } 
             else {
-                echo "No record";
+                echo "<div class='NoRecord'>No record found</div>";
             }
         ?>
         </div>

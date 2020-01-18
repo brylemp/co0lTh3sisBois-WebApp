@@ -1,5 +1,13 @@
 <?php
     session_start();
+    if(!isset($_SESSION["S_authorized"])){
+        header("Refresh:0; url=index.php");
+        exit();
+    }
+    elseif ($_SESSION["S_UserType"] != 'Admin') {
+        header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
+        exit();
+    }
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -16,7 +24,7 @@
     $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `Password`, `UserType`) VALUES('$fname','$lname','$user','$hashed_password','$type')";
     // $result = $conn->query($sql) or die($conn->error);
     if($conn->query($sql)){
-        header("Refresh:0; url=dashboard.php"); 
+        header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
     }
     else{
         header("Refresh:0; url=createuserpage.php"); 

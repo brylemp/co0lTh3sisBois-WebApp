@@ -130,3 +130,13 @@ td, th{
     padding-top: 35px; 
     padding-bottom: 35px; 
 }
+
+.wrapper .main .outeroutertable .NoRecord{
+    /* border: 1px solid black; */
+    margin: 0 auto;
+    width: 81%;
+    text-align: center;
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    font-size: 30px;
+}
