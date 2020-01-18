@@ -127,8 +127,9 @@ td, th{
     margin: 0 auto;
     width: 81%;
     text-align: left;
-    padding-top: 35px; 
-    padding-bottom: 35px; 
+    padding-top: 33px; 
+    padding-bottom: 15px; 
+    font-size: 20px;
 }
 
 .wrapper .main .outeroutertable .NoRecord{

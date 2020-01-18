@@ -75,13 +75,13 @@
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->
-        <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
-        <div class='outeroutertable'>
-        <div class='toparea'></div>
         <?php
             $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
             $result = $conn->query($sql);
-            
+            $forid = $result->fetch_assoc();
+            echo "<div class='title'>USC-TC SHUTTLE DISBURSEMENT</div>
+                    <div class='outeroutertable'>
+                    <div class='toparea'>Driver ID: ".$forid['Driver_ID'] ."</div>";
             if ($result->num_rows > 0) {
                 echo "<div class='fakeoutertable'><table>
                         <tr>
