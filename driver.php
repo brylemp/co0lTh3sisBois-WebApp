@@ -61,7 +61,7 @@
                 }
 
                 $selected_driver = 0; //Prevent Errors
-                if (isset($_GET['driver']) ) { //Get value from line 40
+                if (isset($_GET['driver']) ) { //Get value from line 54
                     $selected_driver = $_GET['driver']; // Get Driver Name
                 }
 

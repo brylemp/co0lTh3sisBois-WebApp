@@ -18,7 +18,6 @@
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
-
 <div class="wrapper">
     <div class="sidebar"> <!-- SIDEBAR -->
         <?php 
@@ -30,7 +29,6 @@
             echo $_SESSION['S_UserType']; 
             echo "</h2>";
         ?>
-
         <ul>
             <li><a href="dashboard.php">All</a></li>
             <?php
