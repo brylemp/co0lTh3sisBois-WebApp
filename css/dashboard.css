@@ -107,6 +107,7 @@ td, th{
 
 .wrapper th:last-child, td:last-child {
     border: none;
+    width: 9%;
     padding-left: 0px;
     background-color: white ;
 }
@@ -130,6 +131,7 @@ td, th{
 
 .wrapper .main .buttonn{
     /* border: 1px solid black; */
+    margin-top: 3px;
     margin-left: 1%;
 }
 
@@ -139,7 +141,7 @@ td, th{
     margin: 0 auto;
     width: 81%;
     text-align: left;
-    padding-top: 20px; 
+    padding-top: 25px; 
     padding-bottom: 20px; 
 }
 

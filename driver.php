@@ -79,11 +79,19 @@
             $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
             $result = $conn->query($sql);
             $forid = $result->fetch_assoc();
-            echo "<div class='title'>USC-TC SHUTTLE DISBURSEMENT</div>
+            $driver_ID = $forid['Driver_ID'];
+            echo "<div class='title'>USC-TC SHUTTLE DISBURSEMENT</div> 
                     <div class='outeroutertable'>
-                    <div class='toparea'>Driver ID: ".$forid['Driver_ID'] ."</div>";
+                    <div class='toparea'><div class='DriverID'>Driver ID: ".$driver_ID ."</div> 
+                    <div class='tab'>
+                        <button type='button' class='btn btn-success btn-lg' onclick='openhist();'>History</button>
+                        <button type='button' class='btn btn-success btn-lg' onclick='opentran();'>Transactions</button>
+                    </div></div>";
+        ?>
+        <div id='History' class='tabcontent'>
+        <?php
             if ($result->num_rows > 0) {
-                echo "<div class='fakeoutertable'><table>
+                echo " <div class='fakeoutertable'><table>
                         <tr>
                             <th>DATE</th>
                             <th>TOTAL AMOUNT</th>
@@ -93,6 +101,10 @@
                         </table></div>
                         <div class='outertable'>
                         <table>";
+                    echo "<tr><td>" .$forid["Date"] ."</td>";
+                    echo "<td>" .$forid["Total_Amount"] ."</td>";
+                    echo "<td>" .$forid["Driver_Status"] ."</td>";
+                    echo "<td><button type='button' class='btn btn-success'>Disburse</button></td></tr>";
                 while($row = $result->fetch_assoc()) {
                     echo "<tr><td>" .$row["Date"] ."</td>";
                     echo "<td>" .$row["Total_Amount"] ."</td>";
@@ -108,13 +120,57 @@
                         <td>150</td>
                         <td></td>
                     </tr></table></div>";
-            } 
+            }
             else {
                 echo "<div class='NoRecord'>No record found</div>";
             }
         ?>
         </div>
+
+        <!-- TRANSACTIONS -->
+        <div id='Transactions' class='tabcontent' style='display:none;'>
+        <?php
+            $sql2 = "SELECT * FROM `PassengerTransactions` WHERE Driver_ID='$driver_ID'";
+            $result2 = $conn->query($sql2);
+            if ($result2->num_rows > 0) {
+                echo " <div class='fakeoutertable2'><table>
+                        <tr>
+                            <th>DATE AND TIME</th>
+                            <th>PASSENGER ID</th>
+                            <th>AMOUNT CHARGED</th>
+                        </tr>
+                        </table></div>
+                        <div class='outertable2'>
+                        <table>";
+                while($row = $result2->fetch_assoc()) {
+                    echo "<tr><td>" .$row["Date_Time"] ."</td>";
+                    echo "<td>" .$row["Passenger_ID"] ."</td>";
+                    echo "<td>₱" .$row["Amount"] ."</td>";
+                }
+                echo "</table></div>";
+            }
+            else {
+                echo "<div class='NoRecord'>No record found</div>";
+            }
+        ?>
+        </div>
+
+        </div>
     </div>
 </div>
+<script>
+
+function openhist() {
+    // alert('idiot');
+    document.getElementById('Transactions').style.display = "none";
+    document.getElementById('History').style.display = "block";
+    
+}
+function opentran() {
+    // alert('idiot');
+    document.getElementById('History').style.display = "none";
+    document.getElementById('Transactions').style.display = "block";
+}
+</script>
 </body>
 </html>

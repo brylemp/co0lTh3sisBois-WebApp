@@ -85,7 +85,7 @@
                         <input type="date" name="searchdate" value="<?php echo $selected_date;?>">
                 </div>   
                 <div class="buttonn">
-                        <button type="submit" class="btn btn-success">Load</button>
+                        <button type="submit" class="btn btn-success btn-sm">Load</button>
                     </form>
                 </div>
             </div>
