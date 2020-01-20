@@ -163,20 +163,21 @@ td, th{
 
 .wrapper .main .outeroutertable .toparea .DriverID{
     /* border: 1px solid black; */
+    width: 20%;
     padding-top: 8px;
 }
 
 .wrapper .main .outeroutertable .toparea .tab{
+    /* border: 1px solid blue; */
     display: flex;
-    width: 850px;
-    /* border: 1px solid black; */
-    margin-left: 23%;
+    width: 80%;
+    /* margin-left: %; */
 }
 
 .wrapper .main .outeroutertable .toparea .tab button{
-    /* border: 1px solid black; */
+    /* border: 1px solid red; */
     width: 40%;
-    margin-right: 8%;
+    margin-right: 4%;
 }
 
 .wrapper .main .outeroutertable .NoRecord{
