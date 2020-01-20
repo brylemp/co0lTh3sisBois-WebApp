@@ -82,7 +82,7 @@
             <div class='toparea'>
                 <div class="date">
                     <form action="dashboard.php" type="GET">
-                        <input type="date" name="searchdate" value="<?php echo $selected_date;?>">
+                        <input type="date" placeholder="yyyy-mm-dd" name="searchdate" value="<?php echo $selected_date;?>">
                 </div>   
                 <div class="buttonn">
                         <button type="submit" class="btn btn-success btn-sm">Load</button>
