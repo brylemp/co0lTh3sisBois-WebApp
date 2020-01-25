@@ -51,7 +51,7 @@
                     $names = array(); //Array to prevent repetition of names sa sidebar
                     while($row = $result->fetch_assoc()) {
                         if(!in_array($row["Driver_Name"],$names)){
-                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'">' .$row["Driver_Name"]. '</a></li>';
+                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'&id='.$row["Driver_ID"].'">' .$row["Driver_Name"]. '</a></li>';
                         }
                         array_push($names, $row["Driver_Name"]);
                     } 
@@ -104,12 +104,41 @@
                     echo "<tr><td>" .$forid["Date"] ."</td>";
                     echo "<td>" .$forid["Total_Amount"] ."</td>";
                     echo "<td>" .$forid["Driver_Status"] ."</td>";
-                    echo "<td><button type='button' class='btn btn-success'>Disburse</button></td></tr>";
+                    
                 while($row = $result->fetch_assoc()) {
                     echo "<tr><td>" .$row["Date"] ."</td>";
                     echo "<td>" .$row["Total_Amount"] ."</td>";
                     echo "<td>" .$row["Driver_Status"] ."</td>";
-                    echo "<td><button type='button' class='btn btn-success'>Disburse</button></td></tr>";
+                    if($row["Driver_Status"]=='Not Disbursed'){
+                        echo '<td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ReceiptModal" data-date="'.$row["Date"].'" data-did="'.$row["Driver_ID"].'">Disburse</button></td></tr>';
+                        echo '<div class="modal fade" id="ReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirm Password</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="passvalues" action="verifydisburse.php" method="POST">
+                                    <center><input type="password" placeholder="Password" name="confirmpw" required="required"><center> <!-- TEMPORARY -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="hidden" id="input1" name="driver_id">
+                                <input type="hidden" id="input2" name="driver_date">
+                                <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
+                                <input type="submit" class="btn btn-success" value="Confirm" id="button1">
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                        </div>';
+                    }
+                    else{
+                        echo '<td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ReceiptModal" disabled>Disburse</button></td></tr>';
+                    }
                 }
                 echo "</table></div>
                     <div class='fakeoutertable'>
@@ -171,6 +200,16 @@ function opentran() {
     document.getElementById('History').style.display = "none";
     document.getElementById('Transactions').style.display = "block";
 }
+
+$('#ReceiptModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+  var driID = button.data('did') 
+  var driDate = button.data('date') 
+  var modal = $(this)
+  modal.find('input[name="driver_id"]').val(driID);
+  modal.find('input[name="driver_date"]').val(driDate);
+})
+
 </script>
 </body>
 </html>

@@ -19,6 +19,7 @@
         $_SESSION['S_firstname']=$row['FName'];
         $_SESSION['S_lastname']=$row['LName'];
         $_SESSION['S_UserType']=$row['UserType'];
+        $_SESSION['S_IDNum']=$row['IDNum'];
         $_SESSION['S_authorized'] = TRUE;
         header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j')); 
         exit();

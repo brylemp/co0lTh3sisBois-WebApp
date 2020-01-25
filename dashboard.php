@@ -23,6 +23,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
@@ -110,8 +113,36 @@
                     echo "<td>" .$row["Total_Amount"] ."</td>";
                     echo "<td>" .$row["Driver_Status"] ."</td>";
                     echo "<td>" .$row["Collectibles"] ."</td>";
-                    echo '<td><button type="button" class="btn btn-success">Disburse</button></td>
-                    </tr>';
+                    if($row["Driver_Status"]=='Not Disbursed'){
+                        echo '<td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ReceiptModal" data-date="'.$row["Date"].'" data-did="'.$row["Driver_ID"].'">Disburse</button></td></tr>';
+                        echo '<div class="modal fade" id="ReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirm Password</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="passvalues" action="verifydisburse.php" method="POST">
+                                    <center><input type="password" placeholder="Password" name="confirmpw" required="required"><center> <!-- TEMPORARY -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="hidden" id="input1" name="driver_id">
+                                <input type="hidden" id="input2" name="driver_date">
+                                <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
+                                <input type="submit" class="btn btn-success" value="Confirm" id="button1">
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                        </div>';
+                    }
+                    else{
+                        echo '<td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ReceiptModal" disabled>Disburse</button></td></tr>';
+                    }
                 }
                 echo "</table></div>";    
             } 
@@ -123,4 +154,14 @@
     </div>
 </div>
 </body>
+<script>
+$('#ReceiptModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+  var driID = button.data('did') 
+  var driDate = button.data('date') 
+  var modal = $(this)
+  modal.find('input[name="driver_id"]').val(driID);
+  modal.find('input[name="driver_date"]').val(driDate);
+})
+</script>
 </html>
