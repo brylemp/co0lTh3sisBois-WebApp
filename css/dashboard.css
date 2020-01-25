@@ -88,8 +88,8 @@ td, th{
     height: 30px; 
 }
 
-.wrapper .fakeoutertable tr:last-child td{  
-    border: none;
+.wrapper .fakeoutertable th:last-child{  
+    padding-left: 91px;
 }
 
 .wrapper table{

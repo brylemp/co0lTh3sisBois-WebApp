@@ -62,7 +62,7 @@
                     $names = array(); //Array to prevent repetition of names sa sidebar
                     while($row = $result->fetch_assoc()) {
                         if(!in_array($row["Driver_Name"],$names)){
-                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'">' .$row["Driver_Name"]. '</a></li>';
+                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'&id='.$row["Driver_ID"].'">' .$row["Driver_Name"]. '</a></li>';
                         }
                         array_push($names, $row["Driver_Name"]);
                     } 
@@ -88,10 +88,10 @@
                         <input type="date" placeholder="yyyy-mm-dd" name="searchdate" value="<?php echo $selected_date;?>">
                 </div>   
                 <div class="buttonn">
-                        <button type="submit" class="btn btn-success btn-sm">Load</button>
-                    </form>
-                </div>
+                    <button type="submit" class="btn btn-success btn-sm">Load</button>
+                </form>
             </div>
+        </div>
         <?php
             $sql = "SELECT * FROM DriverInformation WHERE Date='$selected_date' ORDER BY Driver_ID DESC";
             $result = $conn->query($sql);
@@ -132,6 +132,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <input type="hidden" id="input1" name="driver_id">
                                 <input type="hidden" id="input2" name="driver_date">
+                                <input type="hidden" name="source" value="0">
                                 <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
                                 <input type="submit" class="btn btn-success" value="Confirm" id="button1">
                                 </form>

@@ -15,6 +15,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/newdrive.css">
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
@@ -61,8 +64,13 @@
                 }
 
                 $selected_driver = 0; //Prevent Errors
-                if (isset($_GET['driver']) ) { //Get value from line 54
+                if (isset($_GET['driver']) ) { //Get value from line 57
                     $selected_driver = $_GET['driver']; // Get Driver Name
+                }
+
+                $selected_driver_ID = 0; //Prevent Errors
+                if (isset($_GET['id']) ) { //Get value from line 57
+                    $selected_driver_ID = $_GET['id']; // Get Driver ID
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
@@ -75,21 +83,19 @@
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->
+        <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
+            <div class='outeroutertable'>
+                <div class='toparea'><div class='DriverID'>Driver ID: <?php echo "$selected_driver_ID";?></div> 
+                <div class='tab'>
+                    <button type='button' class='btn btn-success btn-lg' onclick='openhist();'>History</button>
+                    <button type='button' class='btn btn-success btn-lg' onclick='opentran();'>Transactions</button>
+                </div>
+            </div>
+        <div id='History' class='tabcontent'>
         <?php
             $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
             $result = $conn->query($sql);
-            $forid = $result->fetch_assoc();
-            $driver_ID = $forid['Driver_ID'];
-            echo "<div class='title'>USC-TC SHUTTLE DISBURSEMENT</div> 
-                    <div class='outeroutertable'>
-                    <div class='toparea'><div class='DriverID'>Driver ID: ".$driver_ID ."</div> 
-                    <div class='tab'>
-                        <button type='button' class='btn btn-success btn-lg' onclick='openhist();'>History</button>
-                        <button type='button' class='btn btn-success btn-lg' onclick='opentran();'>Transactions</button>
-                    </div></div>";
-        ?>
-        <div id='History' class='tabcontent'>
-        <?php
+
             if ($result->num_rows > 0) {
                 echo " <div class='fakeoutertable'><table>
                         <tr>
@@ -101,10 +107,6 @@
                         </table></div>
                         <div class='outertable'>
                         <table>";
-                    echo "<tr><td>" .$forid["Date"] ."</td>";
-                    echo "<td>" .$forid["Total_Amount"] ."</td>";
-                    echo "<td>" .$forid["Driver_Status"] ."</td>";
-                    
                 while($row = $result->fetch_assoc()) {
                     echo "<tr><td>" .$row["Date"] ."</td>";
                     echo "<td>" .$row["Total_Amount"] ."</td>";
@@ -126,8 +128,9 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <input type="hidden" id="input1" name="driver_id">
-                                <input type="hidden" id="input2" name="driver_date">
+                                <input type="hidden" name="driver_id">
+                                <input type="hidden" name="driver_date">
+                                <input type="hidden" name="source" value="1">
                                 <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
                                 <input type="submit" class="btn btn-success" value="Confirm" id="button1">
                                 </form>
@@ -159,7 +162,7 @@
         <!-- TRANSACTIONS -->
         <div id='Transactions' class='tabcontent' style='display:none;'>
         <?php
-            $sql2 = "SELECT * FROM `PassengerTransactions` WHERE Driver_ID='$driver_ID'";
+            $sql2 = "SELECT * FROM `PassengerTransactions` WHERE Driver_ID='$selected_driver_ID'";
             $result2 = $conn->query($sql2);
             if ($result2->num_rows > 0) {
                 echo " <div class='fakeoutertable2'><table>
