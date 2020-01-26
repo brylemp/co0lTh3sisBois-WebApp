@@ -127,12 +127,13 @@
                             </div>
                             <div class="modal-body">
                                 <form name="passvalues" action="verifydisburse.php" method="POST">
-                                    <center><input type="password" placeholder="Password" name="confirmpw" required="required"><center> <!-- TEMPORARY -->
+                                    <input class="form-control" type="password" placeholder="Password" name="confirmpw" required="required">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <input type="hidden" id="input1" name="driver_id">
-                                <input type="hidden" id="input2" name="driver_date">
+                                <input type="hidden" name="driver_id">
+                                <input type="hidden" name="driver_date">
+                                <input type="hidden" name="new" value="1">
                                 <input type="hidden" name="source" value="0">
                                 <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
                                 <input type="submit" class="btn btn-success" value="Confirm" id="button1">
@@ -143,7 +144,13 @@
                         </div>';
                     }
                     else{
-                        echo '<td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ReceiptModal" disabled>Disburse</button></td></tr>';
+                        echo '<td><form action="receipt.php" method="GET">
+                                    <input type="hidden" name="ID" value="'.$row['Driver_ID'].'">
+                                    <input type="hidden" name="Date" value="'.$row['Date'].'">
+                                    <input type="hidden" name="new" value="0">
+                                    <input type="submit" class="btn btn-outline-success" value=" Receipt "></input>
+                                </form>
+                            </td></tr>';
                     }
                 }
                 echo "</table></div>";    
