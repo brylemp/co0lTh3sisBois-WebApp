@@ -149,13 +149,20 @@
                             </td></tr>';
                     }
                 }
+                $sql2 = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
+                $result2 = $conn->query($sql2);
+                $collect = 0;
+                while($row2 = $result2->fetch_assoc()) {
+                    $collect = $collect + $row2['Collectibles'];
+                }
+
                 echo "</table></div>
                     <div class='fakeoutertable'>
                     <table>    
                     <tr>
                         <td></td>
                         <td>COLLECTIBLES:</td>
-                        <td>150</td>
+                        <td>".$collect."</td>
                         <td></td>
                     </tr></table></div>";
             }

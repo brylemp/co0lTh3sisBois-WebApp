@@ -29,6 +29,7 @@
         $result3 = $conn->query($sql3);
         $row3 = $result3->fetch_assoc();
         $name = $_SESSION['S_lastname'].",".$_SESSION['S_firstname'];
+        date_default_timezone_set('Etc/GMT-8');
         $Da = date('Y-m-j');
         $T = date('h:i:sA');
         $TA = $row3['Total_Amount'];

@@ -1,5 +1,4 @@
 <?php
-    date_default_timezone_set('Etc/GMT-8');
     session_start();
     error_reporting(E_ALL ^ E_NOTICE);
     $selected_date = date('Y-m-j');
