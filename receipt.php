@@ -16,7 +16,6 @@
 
     $ID=$_GET["ID"];
     $Date=$_GET["Date"];
-    $new=$_GET["new"];
 
 ?>
 <!doctype html>
@@ -88,62 +87,6 @@
     </div>
     <div class="main"> <!-- MAIN AREA -->
     <?php
-    if($new==1){
-        $sql = "SELECT * FROM `DriverInformation` WHERE Driver_ID='$ID' AND Date='$Date'";
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $name = $_SESSION['S_lastname'].",".$_SESSION['S_firstname'];
-        $Da = date('Y-m-j');
-        $T = date('h:i:sA');
-        $TA = $row['Total_Amount'];
-        $DI = $row['Driver_ID'];
-        $sql2 = "INSERT INTO `DriverReceipts`(`Disburse_Date`, `Date`, `Time`, `Bursar_Officer`, `Shuttle_Disbursement`, `Driver_ID`) VALUES ('$Da','$Date','$T','$name',$TA,'$DI')";
-        $result2 = $conn->query($sql2) or die($conn->error);
-        $sql2 = "SELECT * FROM `DriverReceipts` WHERE Driver_ID='$ID' and Disburse_Date='$Da' and Time='$T'";
-        $result2 = $conn->query($sql2) or die($conn->error);
-        $row2 = $result2->fetch_assoc();
-        echo '<div class="receiptdiv"> 
-                <div class="rheader"><b>SHUTTLE DISBURSEMENT RECEIPT</b></div>
-                <div class="rbody">
-                    <table>
-                        <tr>
-                            <th>Date:</th>
-                            <td>'.$row2['Disburse_Date'].'</td>
-                        </tr>
-                        <tr>
-                            <th>Time:</th>
-                            <td>'.$row2['Time'].'</td>
-                        </tr>
-                        <tr>
-                            <th>Receipt #:</th>
-                            <td>'.$row2['Receipt_Num'].'</td>
-                        </tr>
-                        <tr>
-                            <th>Bursar Officer:</th>
-                            <td>'.$_SESSION['S_lastname'].",".$_SESSION['S_firstname'].'</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="rbody2">
-                <table>
-                    <tr>
-                        <th>Shuttle Disbursement:</th>
-                        <td>₱'.$row2["Shuttle_Disbursement"].'</td>
-                    </tr>
-                    <tr>
-                        <th>Driver ID #:</th>
-                        <td>'.$row2["Driver_ID"].'</td>
-                    </tr>
-                </table>
-                </div>
-                <p> Received By _____________________________
-                    ___________________________________________
-                </p>
-            </div>
-            <div class="PrintButton"><button type="button" class="btn btn-success" onclick="PrintElem()">Print</button></div>
-            </div>';
-    }
-    else if($new==0){
         $sql2 = "SELECT * FROM `DriverReceipts` WHERE Driver_ID='$ID' AND Date='$Date'";
         $result2 = $conn->query($sql2) or die($conn->error);
         $row2 = $result2->fetch_assoc();
@@ -187,7 +130,7 @@
             </div>
             <div class="PrintButton"><button type="button" class="btn btn-success" onclick="PrintElem()">Print</button></div>
             </div>';
-    }
+    
     
     ?>
     

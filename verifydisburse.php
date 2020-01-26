@@ -25,7 +25,18 @@
         $sql2="UPDATE `DriverInformation` SET `Driver_Status`='Disbursed' WHERE `Driver_ID`='$dri_id' AND `Date`='$dri_date'";
         $result2 = $conn->query($sql2);
 
-        header("Refresh:0; url=receipt.php?ID=".$dri_id."&Date=".$dri_date."&new=".$new); 
+        $sql3 = "SELECT * FROM `DriverInformation` WHERE Driver_ID='$dri_id' AND Date='$dri_date'";
+        $result3 = $conn->query($sql3);
+        $row3 = $result3->fetch_assoc();
+        $name = $_SESSION['S_lastname'].",".$_SESSION['S_firstname'];
+        $Da = date('Y-m-j');
+        $T = date('h:i:sA');
+        $TA = $row3['Total_Amount'];
+        $DI = $row3['Driver_ID'];
+        $sql4 = "INSERT INTO `DriverReceipts`(`Disburse_Date`, `Date`, `Time`, `Bursar_Officer`, `Shuttle_Disbursement`, `Driver_ID`) VALUES ('$Da','$dri_date','$T','$name',$TA,'$DI')";
+        $result4 = $conn->query($sql4) or die($conn->error);
+
+        header("Refresh:0; url=receipt.php?ID=".$dri_id."&Date=".$dri_date); 
         exit();
     }
     else{
