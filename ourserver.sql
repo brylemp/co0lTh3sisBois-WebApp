@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 20, 2020 at 01:07 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Host: localhost
+-- Generation Time: Jan 26, 2020 at 05:40 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,8 +43,8 @@ CREATE TABLE `DriverInformation` (
 --
 
 INSERT INTO `DriverInformation` (`uid`, `Driver_ID`, `Date`, `Driver_Name`, `Driver_Status`, `Total_Amount`, `Collectibles`) VALUES
-(1, '12', '2020-01-18', 'Kenje', 'Not Disbursed', 1100, 10),
-(2, '12', '2020-01-19', 'Kenje', 'Not Disbursed', 1300, 30),
+(1, '12', '2020-01-18', 'Kenje', 'Disbursed', 1100, 10),
+(2, '12', '2020-01-19', 'Kenje', 'Disbursed', 1300, 30),
 (3, '13', '2020-01-18', 'Gian', 'Not Disbursed', 1205, 50),
 (4, '13', '2020-01-19', 'Gian', 'Not Disbursed', 1400, 20),
 (5, '14', '2020-01-18', 'Jon', 'Not Disbursed', 1200, 60),
@@ -53,9 +53,9 @@ INSERT INTO `DriverInformation` (`uid`, `Driver_ID`, `Date`, `Driver_Name`, `Dri
 (8, '15', '2020-01-19', 'Francis', 'Not Disbursed', 900, 10),
 (9, '16', '2020-01-18', 'Diez', 'Not Disbursed', 1500, 60),
 (10, '16', '2020-01-19', 'Diez', 'Not Disbursed', 1600, 70),
-(11, '12', '2020-01-20', 'Kenje', 'Not Disbursed', 1100, 70),
-(12, '12', '2020-01-21', 'Kenje', 'Not Disbursed', 1900, 50),
-(13, '13', '2020-01-20', 'Gian', 'Not Disbursed', 1900, 20),
+(11, '12', '2020-01-20', 'Kenje', 'Disbursed', 1100, 70),
+(12, '12', '2020-01-21', 'Kenje', 'Disbursed', 1900, 50),
+(13, '13', '2020-01-20', 'Gian', 'Disbursed', 1900, 20),
 (14, '13', '2020-01-21', 'Gian', 'Not Disbursed', 1200, 10),
 (15, '13', '2020-01-22', 'Gian', 'Not Disbursed', 1100, 50),
 (16, '13', '2020-01-23', 'Gian', 'Not Disbursed', 600, 5),
@@ -67,11 +67,41 @@ INSERT INTO `DriverInformation` (`uid`, `Driver_ID`, `Date`, `Driver_Name`, `Dri
 (22, '13', '2020-01-29', 'Gian', 'Not Disbursed', 1200, 80),
 (23, '13', '2020-01-30', 'Gian', 'Not Disbursed', 1560, 35),
 (24, '13', '2020-01-31', 'Gian', 'Not Disbursed', 1770, 90),
-(25, '13', '2020-02-01', 'Gian', 'Not Disbursed', 1340, 50),
-(26, '13', '2020-02-02', 'Gian', 'Not Disbursed', 1850, 75),
-(27, '13', '2020-02-03', 'Gian', 'Not Disbursed', 1250, 80),
-(28, '13', '2020-02-04', 'Gian', 'Not Disbursed', 900, 0),
-(29, '12', '2020-01-18', 'Kenje', 'Not Disbursed', 1300, 10);
+(25, '13', '2020-02-01', 'Gian', 'Disbursed', 1340, 50),
+(26, '13', '2020-02-02', 'Gian', 'Disbursed', 1850, 75),
+(27, '13', '2020-02-03', 'Gian', 'Disbursed', 1250, 80),
+(28, '13', '2020-02-04', 'Gian', 'Disbursed', 900, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `DriverReceipts`
+--
+
+CREATE TABLE `DriverReceipts` (
+  `Disburse_Date` varchar(256) NOT NULL,
+  `Date` varchar(256) NOT NULL,
+  `Time` varchar(256) NOT NULL,
+  `Receipt_Num` int(255) NOT NULL,
+  `Bursar_Officer` varchar(256) NOT NULL,
+  `Shuttle_Disbursement` int(255) NOT NULL,
+  `Driver_ID` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `DriverReceipts`
+--
+
+INSERT INTO `DriverReceipts` (`Disburse_Date`, `Date`, `Time`, `Receipt_Num`, `Bursar_Officer`, `Shuttle_Disbursement`, `Driver_ID`) VALUES
+('2020-01-26', '2020-01-18', '11:31:38PM', 274, 'Patalinghug,Bryle', 1100, '12'),
+('2020-01-26', '2020-01-20', '11:31:50PM', 275, 'Patalinghug,Bryle', 1900, '13'),
+('2020-01-26', '2020-01-19', '11:54:28PM', 276, 'Patalinghug,Bryle', 1300, '12'),
+('2020-01-27', '2020-01-20', '12:20:19AM', 277, 'Patalinghug,Bryle', 1100, '12'),
+('2020-01-27', '2020-01-21', '12:22:08AM', 278, 'Sabuero,Daisy', 1900, '12'),
+('2020-01-27', '2020-02-04', '12:25:30AM', 279, 'Sabuero,Daisy', 900, '13'),
+('2020-01-27', '2020-02-02', '12:25:50AM', 280, 'Sabuero,Daisy', 1850, '13'),
+('2020-01-27', '2020-02-03', '12:36:24AM', 281, 'Sabuero,Daisy', 1250, '13'),
+('2020-01-27', '2020-02-01', '12:37:40AM', 282, 'Patalinghug,Bryle', 1340, '13');
 
 -- --------------------------------------------------------
 
@@ -81,9 +111,9 @@ INSERT INTO `DriverInformation` (`uid`, `Driver_ID`, `Date`, `Driver_Name`, `Dri
 
 CREATE TABLE `PassengerTransactions` (
   `uid` int(255) NOT NULL,
-  `Date_Time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Date_Time` datetime NOT NULL DEFAULT current_timestamp(),
   `Passenger_ID` varchar(256) NOT NULL,
-  `Amount` int(10) NOT NULL DEFAULT '5',
+  `Amount` int(10) NOT NULL DEFAULT 5,
   `Driver_ID` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -160,6 +190,12 @@ ALTER TABLE `DriverInformation`
   ADD PRIMARY KEY (`uid`);
 
 --
+-- Indexes for table `DriverReceipts`
+--
+ALTER TABLE `DriverReceipts`
+  ADD UNIQUE KEY `Receipt_Num` (`Receipt_Num`);
+
+--
 -- Indexes for table `PassengerTransactions`
 --
 ALTER TABLE `PassengerTransactions`
@@ -180,6 +216,12 @@ ALTER TABLE `User_Accounts`
 --
 ALTER TABLE `DriverInformation`
   MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `DriverReceipts`
+--
+ALTER TABLE `DriverReceipts`
+  MODIFY `Receipt_Num` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
 
 --
 -- AUTO_INCREMENT for table `PassengerTransactions`
