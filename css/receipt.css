@@ -80,6 +80,12 @@ body * { visibility: visible; }
     margin-left: 35%;
 }
 
+.wrapper .main .PrintButton button{ 
+    /* border: 2px solid black; */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .wrapper .main .receiptdiv{
     border: 2px solid black;
     width: 300px;

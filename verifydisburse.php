@@ -15,7 +15,6 @@
     $acc_id=$_POST["account_id"];
     $dri_date=$_POST["driver_date"];
     $password=$_POST["confirmpw"];
-    $new=$_POST["new"];
 
     $sql="SELECT * FROM User_Accounts where IDNum='$acc_id'";
     $result = $conn->query($sql);

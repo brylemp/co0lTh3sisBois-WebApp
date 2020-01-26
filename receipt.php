@@ -127,10 +127,8 @@
                     ___________________________________________
                 </p>
             </div>
-            <div class="PrintButton"><button type="button" class="btn btn-success" onclick="PrintElem()">Print</button></div>
+            <div class="PrintButton"><button type="button" class="btn btn-secondary" onclick="Back()">Back</button><button type="button" class="btn btn-success" onclick="PrintElem()">Print</button></div>
             </div>';
-    
-    
     ?>
     
 </div>
@@ -138,7 +136,9 @@
 <script>
 function PrintElem(){
     window.print();
-    return true;
+}
+function Back(){
+    window.history.back();
 }
 </script>
 </html>
