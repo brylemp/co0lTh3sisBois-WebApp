@@ -94,7 +94,7 @@
             </div>
         <div id='History' class='tabcontent'>
         <?php
-            $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
+            $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver' ORDER BY Date DESC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {

@@ -107,7 +107,7 @@
                         </tr>
                         <tr>
                             <th>Bursar Officer:</th>
-                            <td>'.$_SESSION['S_lastname'].",".$_SESSION['S_firstname'].'</td>
+                            <td>'.$row2['Bursar_Officer'].'</td>
                         </tr>
                     </table>
                 </div>
