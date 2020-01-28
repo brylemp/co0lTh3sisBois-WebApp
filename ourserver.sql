@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 26, 2020 at 05:40 PM
+-- Generation Time: Jan 28, 2020 at 05:26 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -51,8 +51,8 @@ INSERT INTO `DriverInformation` (`uid`, `Driver_ID`, `Date`, `Driver_Name`, `Dri
 (6, '14', '2020-01-19', 'Jon', 'Not Disbursed', 1500, 30),
 (7, '15', '2020-01-18', 'Francis', 'Not Disbursed', 1600, 10),
 (8, '15', '2020-01-19', 'Francis', 'Not Disbursed', 900, 10),
-(9, '16', '2020-01-18', 'Diez', 'Not Disbursed', 1500, 60),
-(10, '16', '2020-01-19', 'Diez', 'Not Disbursed', 1600, 70),
+(9, '16', '2020-01-18', 'Christian', 'Not Disbursed', 1500, 60),
+(10, '16', '2020-01-19', 'Christian', 'Disbursed', 1600, 70),
 (11, '12', '2020-01-20', 'Kenje', 'Disbursed', 1100, 70),
 (12, '12', '2020-01-21', 'Kenje', 'Disbursed', 1900, 50),
 (13, '13', '2020-01-20', 'Gian', 'Disbursed', 1900, 20),
@@ -101,7 +101,33 @@ INSERT INTO `DriverReceipts` (`Disburse_Date`, `Date`, `Time`, `Receipt_Num`, `B
 ('2020-01-27', '2020-02-04', '12:25:30AM', 279, 'Sabuero,Daisy', 900, '13'),
 ('2020-01-27', '2020-02-02', '12:25:50AM', 280, 'Sabuero,Daisy', 1850, '13'),
 ('2020-01-27', '2020-02-03', '12:36:24AM', 281, 'Sabuero,Daisy', 1250, '13'),
-('2020-01-27', '2020-02-01', '12:37:40AM', 282, 'Patalinghug,Bryle', 1340, '13');
+('2020-01-27', '2020-02-01', '12:37:40AM', 282, 'Patalinghug,Bryle', 1340, '13'),
+('2020-01-27', '2020-01-19', '03:21:50PM', 283, 'Patalinghug,Bryle', 1600, '16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Driver_Accounts`
+--
+
+CREATE TABLE `Driver_Accounts` (
+  `Driver_ID` varchar(255) NOT NULL,
+  `Fname` varchar(255) NOT NULL,
+  `Lname` varchar(255) NOT NULL,
+  `RFID_UID` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Driver_Accounts`
+--
+
+INSERT INTO `Driver_Accounts` (`Driver_ID`, `Fname`, `Lname`, `RFID_UID`) VALUES
+('13', 'Gian', 'Lim', '00087a4d90f580e38a71dbda7a8d0717'),
+('12', 'Kenje', 'Hofilena', '6bb8182979cc4fd85cb4329786259d60'),
+('15', 'Francis', 'Manubag', '74e74bb6fffb97140ad83d4f11356f33'),
+('16', 'Christian', 'Diez', 'a3211bf3b462ef147d80ae01a574b14b'),
+('20', 'Gavin', 'Free', 'cff46687495b57fc31611ffd45777595'),
+('14', 'Jon', 'Tillo', 'e8df4757fa4cb5f47a390c3ffae18370');
 
 -- --------------------------------------------------------
 
@@ -196,6 +222,13 @@ ALTER TABLE `DriverReceipts`
   ADD UNIQUE KEY `Receipt_Num` (`Receipt_Num`);
 
 --
+-- Indexes for table `Driver_Accounts`
+--
+ALTER TABLE `Driver_Accounts`
+  ADD PRIMARY KEY (`RFID_UID`),
+  ADD UNIQUE KEY `Driver_ID` (`Driver_ID`);
+
+--
 -- Indexes for table `PassengerTransactions`
 --
 ALTER TABLE `PassengerTransactions`
@@ -221,7 +254,7 @@ ALTER TABLE `DriverInformation`
 -- AUTO_INCREMENT for table `DriverReceipts`
 --
 ALTER TABLE `DriverReceipts`
-  MODIFY `Receipt_Num` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
+  MODIFY `Receipt_Num` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=284;
 
 --
 -- AUTO_INCREMENT for table `PassengerTransactions`
