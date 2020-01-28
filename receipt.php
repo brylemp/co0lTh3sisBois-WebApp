@@ -60,27 +60,30 @@
                     die("Connection failed: ".$conn->connect_error);
                 } 
 
-                $sql = "SELECT * FROM DriverInformation";
+                $sql = "SELECT * FROM Driver_Accounts ORDER BY `Driver_ID` ASC";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
-                    $names = array(); //Array to prevent repetition of names sa sidebar
                     while($row = $result->fetch_assoc()) {
-                        if(!in_array($row["Driver_Name"],$names)){
-                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'">' .$row["Driver_Name"]. '</a></li>';
+                        if($ID == $row["Driver_ID"]){
+                            echo '<li class="active"><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
                         }
-                        array_push($names, $row["Driver_Name"]);
+                        else{
+                            echo '<li><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
+                        }
                     } 
                 } 
                 else {
-                    echo "No record";
+                    echo "<h2>No Driver</h2>";
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
+                    echo '<li><a href="adddriverpage.php">Add Driver</a></li>';
                     echo '<li><a href="createuserpage.php">Create Account</a></li>';
                 }
-                
+
                 echo '<li><a href="logout.php">LOGOUT</a></li>';
+
             ?>
         </ul>
     </div>

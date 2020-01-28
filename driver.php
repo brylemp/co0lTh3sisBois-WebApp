@@ -47,22 +47,6 @@
                     echo '<div class="title">FAIL</div>';
                     die("Connection failed: ".$conn->connect_error);
                 } 
-            
-                $sql = "SELECT * FROM DriverInformation";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    $names = array(); //Array to prevent repetition of names sa sidebar
-                    while($row = $result->fetch_assoc()) {
-                        if(!in_array($row["Driver_Name"],$names)){
-                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'&id='.$row["Driver_ID"].'">' .$row["Driver_Name"]. '</a></li>';
-                        }
-                        array_push($names, $row["Driver_Name"]);
-                    } 
-                } 
-                else {
-                    echo "No record";
-                }
 
                 $selected_driver = 0; //Prevent Errors
                 if (isset($_GET['driver']) ) { //Get value from line 57
@@ -74,13 +58,30 @@
                     $selected_driver_ID = $_GET['id']; // Get Driver ID
                 }
 
+                $sql = "SELECT * FROM Driver_Accounts ORDER BY `Driver_ID` ASC";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        if($selected_driver == $row["Fname"]){
+                            echo '<li class="active"><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
+                        }
+                        else{
+                            echo '<li><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
+                        }
+                    } 
+                } 
+                else {
+                    echo "<h2>No Driver</h2>";
+                }
+
                 if($_SESSION['S_UserType']=='Admin'){
                     echo '<li><a href="adddriverpage.php">Add Driver</a></li>';
                     echo '<li><a href="createuserpage.php">Create Account</a></li>';
                 }
 
                 echo '<li><a href="logout.php">LOGOUT</a></li>';
-                
+
             ?>
         </ul>
     </div>

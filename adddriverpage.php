@@ -43,29 +43,26 @@
                 $dbname = "ourserver"; 
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
+                // Check connection
                 if($conn->connect_error) {
                     echo '<div class="title">FAIL</div>';
                     die("Connection failed: ".$conn->connect_error);
                 } 
 
-                $sql = "SELECT * FROM DriverInformation";
+                $sql = "SELECT * FROM Driver_Accounts ORDER BY `Driver_ID` ASC";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
-                    $names = array(); //Array to prevent repetition of names sa sidebar
                     while($row = $result->fetch_assoc()) {
-                        if(!in_array($row["Driver_Name"],$names)){
-                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'">' .$row["Driver_Name"]. '</a></li>';
-                        }
-                        array_push($names, $row["Driver_Name"]);
+                        echo '<li><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
                     } 
                 } 
                 else {
-                    echo "No record";
+                    echo "<h2>No Driver</h2>";
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
-                    echo '<li><a href="adddriverpage.php">Add Driver</a></li>';
+                    echo '<li class="active"><a href="adddriverpage.php">Add Driver</a></li>';
                     echo '<li><a href="createuserpage.php">Create Account</a></li>';
                 }
                 
@@ -87,20 +84,24 @@
                             <div class="col">
                                 <!-- Complete Name -->
                                 <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" name="driver_name" required="required">
-                                    <label for="materialRegisterFormFirstName">Driver Name</label>
+                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" name="fname" required="required">
+                                    <label for="materialRegisterFormFirstName">First Name</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" name="lname" required="required">
+                                    <label for="materialRegisterFormFirstName">Last Name</label>
                                 </div>
                             </div>
                         </div>
-                        <!-- E-mail -->
+                        <!-- Driver ID -->
                         <div class="md-form mt-0">
                             <input type="text" id="materialRegisterFormFirstName" class="form-control" name="driver_id" required="required">
                             <label for="materialRegisterFormFirstName">Driver ID Number</label>
                         </div>
-                        <!-- Password -->
+                        <!-- RFID ID -->
                         <div class="md-form">
-                            <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required">
-                            <label for="materialRegisterFormPassword">Password</label>
+                            <input type="text" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="RFIDID">
+                            <label for="materialRegisterFormPassword">RFID UID</label>
                         </div>
                         <!-- Sign up button -->
                         <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Create</button>

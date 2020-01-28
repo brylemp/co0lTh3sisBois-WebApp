@@ -42,7 +42,7 @@
             echo "</h2>";
         ?>
         <ul>
-            <li><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
+            <li class="active"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
                 $servername = "localhost";
                 $username = "root";
@@ -56,20 +56,16 @@
                     die("Connection failed: ".$conn->connect_error);
                 } 
 
-                $sql = "SELECT * FROM DriverInformation";
+                $sql = "SELECT * FROM Driver_Accounts ORDER BY `Driver_ID` ASC";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
-                    $names = array(); //Array to prevent repetition of names sa sidebar
                     while($row = $result->fetch_assoc()) {
-                        if(!in_array($row["Driver_Name"],$names)){
-                            echo '<li><a href="driver.php?driver='.$row["Driver_Name"].'&id='.$row["Driver_ID"].'">' .$row["Driver_Name"]. '</a></li>';
-                        }
-                        array_push($names, $row["Driver_Name"]);
+                        echo '<li><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
                     } 
                 } 
                 else {
-                    echo "No record";
+                    echo "<h2>No Driver</h2>";
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
@@ -86,7 +82,7 @@
         <div class='outeroutertable'>
             <div class='toparea'>
                 <div class="date">
-                    <form action="dashboard.php" type="GET">
+                    <form action="dashboard.php" method="GET">
                         <input type="date" placeholder="yyyy-mm-dd" name="searchdate" value="<?php echo $selected_date;?>">
                 </div>   
                 <div class="buttonn">
@@ -95,7 +91,7 @@
             </div>
         </div>
         <?php
-            $sql = "SELECT * FROM DriverInformation WHERE Date='$selected_date' ORDER BY Driver_ID DESC";
+            $sql = "SELECT * FROM DriverInformation WHERE Date='$selected_date' ORDER BY Driver_ID ASC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -164,12 +160,12 @@
 </body>
 <script>
 $('#ReceiptModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) 
-  var driID = button.data('did') 
-  var driDate = button.data('date') 
-  var modal = $(this)
-  modal.find('input[name="driver_id"]').val(driID);
-  modal.find('input[name="driver_date"]').val(driDate);
+    var button = $(event.relatedTarget) 
+    var driID = button.data('did') 
+    var driDate = button.data('date') 
+    var modal = $(this)
+    modal.find('input[name="driver_id"]').val(driID);
+    modal.find('input[name="driver_date"]').val(driDate);
 })
 </script>
 </html>

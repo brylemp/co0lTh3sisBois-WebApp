@@ -15,12 +15,19 @@ body * { visibility: visible; }
     position: relative;
 }
 
+.wrapper .sidebar::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 .wrapper .sidebar{
     position: fixed;
     width: 200px;
     height: 100%;
     background-color: rgb(67, 99, 56);
     padding-top: 20px;
+    overflow: hidden;
+    overflow-y: overlay;
 }
 
 .wrapper .sidebar h1{
@@ -40,10 +47,9 @@ body * { visibility: visible; }
 .wrapper .sidebar ul li{
     text-align: center;
     list-style: none;
-    /* padding-bottom: 11%; */
-    margin-bottom: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin-left: -30%;
-    /* padding: 15px; */
     border-bottom: 1px solid rgba(0,0,0,0.05);
     border-top: 1px solid rgba(255,255,255,0.05);
 }
@@ -53,7 +59,11 @@ body * { visibility: visible; }
 }
 
 .wrapper .sidebar ul li.active a{
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255);
+}
+
+.wrapper .sidebar ul li.active{
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 .wrapper .sidebar ul li a:hover{
@@ -62,7 +72,7 @@ body * { visibility: visible; }
 }
 
 .wrapper .sidebar ul li:hover{
-    background-color: rgba(255, 255, 255, 0.010);
+    /* background-color: rgba(255, 255, 255, 0.010); */
 }
 
 .wrapper .main{
