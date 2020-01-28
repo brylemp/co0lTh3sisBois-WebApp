@@ -75,6 +75,7 @@
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
+                    echo '<li><a href="adddriverpage.php">Add Driver</a></li>';
                     echo '<li><a href="createuserpage.php">Create Account</a></li>';
                 }
 
