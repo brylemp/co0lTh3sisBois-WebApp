@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Etc/GMT-8');
     session_start();
     error_reporting(E_ALL ^ E_NOTICE);
     $selected_date = date('Y-m-j');
@@ -42,7 +43,11 @@
             echo "</h1>";
 
             echo "<h2>";
-            echo $_SESSION['S_UserType']; 
+            echo $_SESSION['S_UserType'];
+            echo "</h2>";
+
+            echo "<h2>";
+            echo date("F j, Y"); 
             echo "</h2>";
         ?>
         <ul>

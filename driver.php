@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Etc/GMT-8');
     session_start();
     if( !isset($_SESSION["S_authorized"]) ){
         header("Refresh:0; url=index.php");
@@ -31,6 +32,10 @@
 
             echo "<h2>";
             echo $_SESSION['S_UserType']; 
+            echo "</h2>";
+            
+            echo "<h2>";
+            echo date("F j, Y"); 
             echo "</h2>";
         ?>
         <ul>
