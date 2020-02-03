@@ -27,7 +27,7 @@
     <link rel = "icon" href = "images/icon.png">
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/receipt.css">
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>

@@ -15,7 +15,7 @@
     <link rel = "icon" href = "images/icon.png">
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/newdrive.css">
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -101,7 +101,7 @@
             </div>
         <div id='History' class='tabcontent'>
         <?php
-            $sql = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver' ORDER BY Date DESC";
+            $sql = "SELECT * FROM `DriverInformation` WHERE Driver_ID=$selected_driver_ID ORDER BY Date DESC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -182,7 +182,7 @@
         <!-- TRANSACTIONS -->
         <div id='Transactions' class='tabcontent' style='display:none;'>
         <?php
-            $sql2 = "SELECT * FROM `PassengerTransactions` WHERE Driver_ID='$selected_driver_ID'";
+            $sql2 = "SELECT * FROM `PassengerTransactions` WHERE Driver_ID=$selected_driver_ID";
             $result2 = $conn->query($sql2);
             if ($result2->num_rows > 0) {
                 echo " <div class='fakeoutertable2'><table>
@@ -194,16 +194,17 @@
                         </table></div>
                         <div class='outertable2'>
                         <table>";
-                while($row = $result2->fetch_assoc()) {
-                    echo "<tr><td>" .$row["Date_Time"] ."</td>";
-                    echo "<td>" .$row["Passenger_ID"] ."</td>";
-                    echo "<td>₱" .$row["Amount"] ."</td>";
+                while($row3 = $result2->fetch_assoc()) {
+                    echo "<tr><td>" .$row3["Date_Time"] ."</td>";
+                    echo "<td>" .$row3["Passenger_ID"] ."</td>";
+                    echo "<td>₱" .$row3["Amount"] ."</td>";
                 }
                 echo "</table></div>";
             }
             else {
                 echo "<div class='NoRecord'>No record found</div>";
             }
+        $conn->close();
         ?>
         </div>
 
