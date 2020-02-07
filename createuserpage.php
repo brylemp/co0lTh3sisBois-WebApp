@@ -112,7 +112,7 @@
                             </div>
                             <div class="col">
                                 <select class="form-control" name="usertype" id="registerusertype">
-                                    <option value="ut">User Type</option>
+                                    <option disabled selected hidden>Select User Type</option>
                                     <option value="User">Normal</option>
                                     <option value="Admin">Admin</option>
                                 </select>
@@ -186,13 +186,6 @@
             document.getElementById("registeridnum").className = "form-control is-valid";
         }
 
-        if(usrtp[0].value=="ut"){
-            document.getElementById("registerusertype").className = "form-control is-invalid"; 
-        }
-        else{
-            document.getElementById("registerusertype").className = "form-control is-valid";
-        }
-
         ////ERRORS////
 
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
@@ -204,10 +197,6 @@
         }
 
         if(isNaN(idnum[0].value)==true){
-            return false;
-        }
-
-        if(usrtp[0].value=="ut"){
             return false;
         }
     }
