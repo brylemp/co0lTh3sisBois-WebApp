@@ -20,7 +20,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/newuser.css">
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
@@ -77,54 +77,66 @@
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->
-        <div class="register"> <!-- DI NI AKOA -->
-            <div class="card">
-                <h5 class="card-header info-color white-text text-center py-4">
-                    <strong>Create User</strong>
-                </h5>
-                <!--Card content-->
+    <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
+        <div class="newuser"> 
+            <div class="userform">
+                <div class="headerform">
+                    <h1>Create Account</h1>
+                </div>
                 <div class="card-body px-lg-5 pt-0">
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="createuserprocess.php" method="POST" onsubmit="return validate()">
+                    <form class="text-center" action="createuserprocess.php" method="POST" onsubmit="return validate()">
                         <div class="form-row">
                             <div class="col">
                                 <!-- First name -->
                                 <div class="md-form">
-                                    <input type="text" id="registerfname" class="form-control" name="firstname" required="required">
-                                    <label for="materialRegisterFormFirstName">First name</label>
+                                    <input type="text" id="registerfname" class="form-control" name="firstname" required="required" placeholder="First Name">
+                                    <label class="errortext" id="fnamelabel"></label>
                                 </div>
                             </div>
                             <div class="col">
                                 <!-- Last name -->
                                 <div class="md-form">
-                                    <input type="text" id="registerlname" class="form-control" name="lastname" required="required">
-                                    <label for="materialRegisterFormFirstName">Last name</label>
+                                    <input type="text" id="registerlname" class="form-control" name="lastname" required="required" placeholder="Last Name">
+                                    <label></label>
                                 </div>
                             </div>
                         </div>
-                        <!-- ID NUMBER -->
-                        <div class="md-form mt-0">
-                            <input type="text" id="registeridnum" class="form-control" name="idnum" required="required">
-                            <label for="materialRegisterFormFirstName">ID Number</label>
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- ID NUMBER -->
+                                <div class="md-form mt-0">
+                                    <input type="text" id="registeridnum" class="form-control" name="idnum" required="required" placeholder="ID Number">
+                                    <label class="errortext" id="idnumlabel"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <select class="form-control" name="usertype" id="registerusertype">
+                                    <option value="ut">User Type</option>
+                                    <option value="User">Normal</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                                <label class="errortext" id="usertypelabel"></label>
+                            </div>
                         </div>
-                        <!-- USER NAME -->
-                        <div class="md-form mt-0">
-                            <input type="text" id="registeruname" class="form-control" name="username" required="required">
-                            <label for="materialRegisterFormFirstName">User Name</label>
-                        </div>
-                        <!-- Password -->
-                        <div class="md-form">
-                            <input type="password" id="registerpaswrd" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required">
-                            <label for="materialRegisterFormPassword">Password</label>
-                        </div>
-                        <select name="usertype">
-                            <option value="Admin">Admin</option>
-                            <option value="User">User</option>
-                        </select>
-                        <!-- Sign up button -->
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- USER NAME -->
+                                <div class="md-form mt-0">
+                                    <input type="text" id="registeruname" class="form-control" name="username" required="required" placeholder="User Name">
+                                    <label class="errortext" id="unamelabel"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!-- PASSWORD -->
+                                <div class="md-form">
+                                    <input type="password" id="registerpaswrd" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required" placeholder="Password">
+                                    <label class="errortext" id="pwlabel"></label>
+                                </div>
+                            </div>
+                        </div> 
                         <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Create</button>
                     </form>
-                    <!-- Form -->
                 </div>
             </div>
         </div>
@@ -139,6 +151,7 @@
         var idnum = document.getElementsByName("idnum");
         var uname = document.getElementsByName("username");
         var pswrd = document.getElementsByName("password");
+        var usrtp = document.getElementsByName("usertype");
 
         var re_names = /^[A-Za-z]+$/;
         var re_uname = /^[A-Za-z0-9]+$/;
@@ -148,6 +161,7 @@
             // alert('Name must not have any numbers or special characters');
             document.getElementById("registerfname").className = "form-control is-invalid";
             document.getElementById("registerlname").className = "form-control is-invalid";
+            document.getElementById("fnamelabel").innerHTML = "Name must not have any numbers or special characters"
         }
         else{
             document.getElementById("registerfname").className = "form-control is-valid";
@@ -170,6 +184,12 @@
             document.getElementById("registeridnum").className = "form-control is-valid";
         }
 
+        if(usrtp[0].value=="ut"){
+            document.getElementById("registerusertype").className = "form-control is-invalid"; 
+        }
+        else{
+            document.getElementById("registerusertype").className = "form-control is-valid";
+        }
 
         ////ERRORS////
 
@@ -182,6 +202,10 @@
         }
 
         if(isNaN(idnum[0].value)==true){
+            return false;
+        }
+
+        if(usrtp[0].value=="ut"){
             return false;
         }
     }
