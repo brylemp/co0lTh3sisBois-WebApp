@@ -171,6 +171,7 @@
         if(!re_uname.test(uname[0].value)){
             // alert('User Name must not have any special characters');
             document.getElementById("registeruname").className = "form-control is-invalid";
+            document.getElementById("unamelabel").innerHTML = "User Name must not have any special characters"
         }
         else{
             document.getElementById("registeruname").className = "form-control is-valid";
@@ -178,6 +179,7 @@
 
         if(isNaN(idnum[0].value)==true){
             // alert('ID Number must be in numbers');
+            document.getElementById("idnumlabel").innerHTML = "ID Number must be in numbers"
             document.getElementById("registeridnum").className = "form-control is-invalid";
         }
         else{

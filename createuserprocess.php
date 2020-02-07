@@ -26,9 +26,9 @@
     $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `UName`, `Password`, `UserType`) VALUES('$fname','$lname','$idnum','$user','$hashed_password','$type')";
     // $result = $conn->query($sql) or die($conn->error);
     if($conn->query($sql)){
-        header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
+        // header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
     }
     else{
-        header("Refresh:0; url=createuserpage.php"); 
+        // header("Refresh:0; url=createuserpage.php"); 
     }
 ?>

@@ -20,7 +20,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/newuser.css">
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
@@ -77,42 +77,48 @@
         </ul>
     </div>
     <div class="main"> <!-- MAIN AREA -->
-        <div class="register"> <!-- DI NI AKOA -->
-            <div class="card">
-                <h5 class="card-header info-color white-text text-center py-4">
-                    <strong>Add New Driver</strong>
-                </h5>
-                <!--Card content-->
+    <div class="title">USC-TC SHUTTLE DISBURSEMENT</div>
+        <div class="newuser"> 
+            <div class="userform">
+                <div class="headerform">
+                    <h1>Add New Driver</h1>
+                </div>
                 <div class="card-body px-lg-5 pt-0">
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="adddriverprocess.php" method="POST" onsubmit="return validate()">
+                    <form class="text-center" action="adddriverprocess.php" method="POST" onsubmit="return validate()">
                         <div class="form-row">
                             <div class="col">
-                                <!-- Complete Name -->
+                                <!-- First name -->
                                 <div class="md-form">
-                                    <input type="text" id="registerfname" class="form-control" name="fname" required="required">
-                                    <label for="materialRegisterFormFirstName">First Name</label>
+                                    <input type="text" id="registerfname" class="form-control" name="fname" required="required" placeholder="First Name">
+                                    <label class="errortext" id="fnamelabel"></label>
                                 </div>
+                            </div>
+                            <div class="col">
+                                <!-- Last name -->
                                 <div class="md-form">
-                                    <input type="text" id="registerlname" class="form-control" name="lname" required="required">
-                                    <label for="materialRegisterFormFirstName">Last Name</label>
+                                    <input type="text" id="registerlname" class="form-control" name="lname" required="required" placeholder="Last Name">
+                                    <label></label>
                                 </div>
                             </div>
                         </div>
-                        <!-- Driver ID -->
-                        <div class="md-form mt-0">
-                            <input type="text" id="registerdid" class="form-control" name="driver_id" required="required">
-                            <label for="materialRegisterFormFirstName">Driver ID Number</label>
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- ID NUMBER -->
+                                <div class="md-form">
+                                    <input type="text" id="registerdid" class="form-control" name="driver_id" required="required" placeholder="ID Number">
+                                    <label class="errortext" id="idnumlabel"></label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="md-form">
+                                    <input type="text" id="registerfid" class="form-control" name="RFIDID" required="required" placeholder="RFID Number">
+                                    <label class="errortext" id="rfidlabel"></label>
+                                </div>
+                            </div>
                         </div>
-                        <!-- RFID ID -->
-                        <div class="md-form">
-                            <input type="text" id="registerfnamerfid" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="RFIDID">
-                            <label for="materialRegisterFormPassword">RFID UID</label>
-                        </div>
-                        <!-- Sign up button -->
                         <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Create</button>
                     </form>
-                    <!-- Form -->
                 </div>
             </div>
         </div>
@@ -130,6 +136,7 @@
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
             document.getElementById("registerfname").className = "form-control is-invalid";
             document.getElementById("registerlname").className = "form-control is-invalid";
+            document.getElementById("fnamelabel").innerHTML = "Name must not have any numbers or special characters"
         }
         else{
             document.getElementById("registerfname").className = "form-control is-valid";
@@ -138,6 +145,7 @@
         
         if(isNaN(idnum[0].value)==true){
             document.getElementById("registerdid").className = "form-control is-invalid";
+            document.getElementById("idnumlabel").innerHTML = "ID Number must be in numbers"
         }
         else{
             document.getElementById("registerdid").className = "form-control is-valid";

@@ -99,6 +99,11 @@ td, th{
     padding-bottom: 40px;
 }
 
+.newuser .userform .headerform h1{
+    font-weight: 300;
+    font-size: 50px;
+}
+
 .errortext{
     /* border: 1px solid red; */
     font-size: 12.5px;
