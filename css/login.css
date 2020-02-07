@@ -28,6 +28,26 @@ body {
     text-align: center;
 }
 
+.loginText input[type=text] {
+    border: 1px solid rgb(155, 155, 155);
+    background-color: white;
+    background-image: url(../images/unameicon.png);
+    background-size: 28px;   
+    background-position: -1px -1px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+}
+
+.loginText input[type=password] {
+    border: 1px solid rgb(155, 155, 155);
+    background-color: white;
+    background-image: url(../images/pwicon.png);
+    background-size: 15px;   
+    background-position: 7px 6px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+}
+
 .loginButton{
     /* border: solid aqua; */
     width: 100%;
