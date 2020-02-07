@@ -90,31 +90,31 @@
                             <div class="col">
                                 <!-- First name -->
                                 <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" name="firstname" required="required">
+                                    <input type="text" id="registerfname" class="form-control" name="firstname" required="required">
                                     <label for="materialRegisterFormFirstName">First name</label>
                                 </div>
                             </div>
                             <div class="col">
                                 <!-- Last name -->
                                 <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" name="lastname" required="required">
+                                    <input type="text" id="registerlname" class="form-control" name="lastname" required="required">
                                     <label for="materialRegisterFormFirstName">Last name</label>
                                 </div>
                             </div>
                         </div>
                         <!-- ID NUMBER -->
                         <div class="md-form mt-0">
-                            <input type="text" id="materialRegisterFormFirstName" class="form-control" name="idnum" required="required">
+                            <input type="text" id="registeridnum" class="form-control" name="idnum" required="required">
                             <label for="materialRegisterFormFirstName">ID Number</label>
                         </div>
                         <!-- USER NAME -->
                         <div class="md-form mt-0">
-                            <input type="text" id="materialRegisterFormFirstName" class="form-control" name="username" required="required">
+                            <input type="text" id="registeruname" class="form-control" name="username" required="required">
                             <label for="materialRegisterFormFirstName">User Name</label>
                         </div>
                         <!-- Password -->
                         <div class="md-form">
-                            <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required">
+                            <input type="password" id="registerpaswrd" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required">
                             <label for="materialRegisterFormPassword">Password</label>
                         </div>
                         <select name="usertype">
@@ -142,19 +142,46 @@
 
         var re_names = /^[A-Za-z]+$/;
         var re_uname = /^[A-Za-z0-9]+$/;
+        
 
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
-            alert('Name must not have any numbers or special characters');
+            // alert('Name must not have any numbers or special characters');
+            document.getElementById("registerfname").className = "form-control is-invalid";
+            document.getElementById("registerlname").className = "form-control is-invalid";
+        }
+        else{
+            document.getElementById("registerfname").className = "form-control is-valid";
+            document.getElementById("registerlname").className = "form-control is-valid";
+        }
+        
+        if(!re_uname.test(uname[0].value)){
+            // alert('User Name must not have any special characters');
+            document.getElementById("registeruname").className = "form-control is-invalid";
+        }
+        else{
+            document.getElementById("registeruname").className = "form-control is-valid";
+        }
+
+        if(isNaN(idnum[0].value)==true){
+            // alert('ID Number must be in numbers');
+            document.getElementById("registeridnum").className = "form-control is-invalid";
+        }
+        else{
+            document.getElementById("registeridnum").className = "form-control is-valid";
+        }
+
+
+        ////ERRORS////
+
+        if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
             return false;
         }
         
         if(!re_uname.test(uname[0].value)){
-            alert('User Name must not have any special characters');
             return false;
         }
 
         if(isNaN(idnum[0].value)==true){
-            alert('ID Number must be in numbers');
             return false;
         }
     }

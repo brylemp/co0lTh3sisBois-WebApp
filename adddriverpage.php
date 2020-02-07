@@ -90,23 +90,23 @@
                             <div class="col">
                                 <!-- Complete Name -->
                                 <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" name="fname" required="required">
+                                    <input type="text" id="registerfname" class="form-control" name="fname" required="required">
                                     <label for="materialRegisterFormFirstName">First Name</label>
                                 </div>
                                 <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control" name="lname" required="required">
+                                    <input type="text" id="registerlname" class="form-control" name="lname" required="required">
                                     <label for="materialRegisterFormFirstName">Last Name</label>
                                 </div>
                             </div>
                         </div>
                         <!-- Driver ID -->
                         <div class="md-form mt-0">
-                            <input type="text" id="materialRegisterFormFirstName" class="form-control" name="driver_id" required="required">
+                            <input type="text" id="registerdid" class="form-control" name="driver_id" required="required">
                             <label for="materialRegisterFormFirstName">Driver ID Number</label>
                         </div>
                         <!-- RFID ID -->
                         <div class="md-form">
-                            <input type="text" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="RFIDID">
+                            <input type="text" id="registerfnamerfid" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="RFIDID">
                             <label for="materialRegisterFormPassword">RFID UID</label>
                         </div>
                         <!-- Sign up button -->
@@ -128,14 +128,31 @@
         var re_names = /^[A-Za-z]+$/;
 
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
-            alert('Name must not have any numbers or special characters');
+            document.getElementById("registerfname").className = "form-control is-invalid";
+            document.getElementById("registerlname").className = "form-control is-invalid";
+        }
+        else{
+            document.getElementById("registerfname").className = "form-control is-valid";
+            document.getElementById("registerlname").className = "form-control is-valid";
+        }
+        
+        if(isNaN(idnum[0].value)==true){
+            document.getElementById("registerdid").className = "form-control is-invalid";
+        }
+        else{
+            document.getElementById("registerdid").className = "form-control is-valid";
+        }
+
+        //// ERROR /////
+
+        if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
             return false;
         }
         
         if(isNaN(idnum[0].value)==true){
-            alert('ID Number must be in numbers');
             return false;
         }
+
     }
 </script>
 </html>
