@@ -85,7 +85,7 @@
                 <!--Card content-->
                 <div class="card-body px-lg-5 pt-0">
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="adddriverprocess.php" method="POST">
+                    <form class="text-center" style="color: #757575;" action="adddriverprocess.php" method="POST" onsubmit="return validate()">
                         <div class="form-row">
                             <div class="col">
                                 <!-- Complete Name -->
@@ -119,6 +119,25 @@
     </div>
 </div>
 </body>
+<script>
+    function validate(){
+        var fname = document.getElementsByName("fname");
+        var lname = document.getElementsByName("lname");
+        var idnum = document.getElementsByName("driver_id");
+
+        var re_names = /^[A-Za-z]+$/;
+
+        if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
+            alert('Name must not have any numbers or special characters');
+            return false;
+        }
+        
+        if(isNaN(idnum[0].value)==true){
+            alert('ID Number must be in numbers');
+            return false;
+        }
+    }
+</script>
 </html>
 
 
