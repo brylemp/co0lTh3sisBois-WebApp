@@ -9,7 +9,7 @@
     $username=$_POST['username'];
     $password=$_POST['password'];
     
-    $sql="SELECT * FROM User_Accounts where IDNum='$username'";
+    $sql="SELECT * FROM User_Accounts where UName='$username'";
 
     $result = $conn->query($sql) or die($conn->error);
     $row = $result->fetch_assoc();

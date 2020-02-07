@@ -32,6 +32,7 @@
             echo "</h1>";
 
             echo "<h2>";
+            echo $_SESSION['S_IDNum']  ."<br>"; 
             echo $_SESSION['S_UserType']; 
             echo "</h2>";
 
@@ -84,7 +85,7 @@
                 <!--Card content-->
                 <div class="card-body px-lg-5 pt-0">
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="createuserprocess.php" method="POST">
+                    <form class="text-center" style="color: #757575;" action="createuserprocess.php" method="POST" onsubmit="return validate()">
                         <div class="form-row">
                             <div class="col">
                                 <!-- First name -->
@@ -101,10 +102,15 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- E-mail -->
+                        <!-- ID NUMBER -->
+                        <div class="md-form mt-0">
+                            <input type="text" id="materialRegisterFormFirstName" class="form-control" name="idnum" required="required">
+                            <label for="materialRegisterFormFirstName">ID Number</label>
+                        </div>
+                        <!-- USER NAME -->
                         <div class="md-form mt-0">
                             <input type="text" id="materialRegisterFormFirstName" class="form-control" name="username" required="required">
-                            <label for="materialRegisterFormFirstName">ID Number</label>
+                            <label for="materialRegisterFormFirstName">User Name</label>
                         </div>
                         <!-- Password -->
                         <div class="md-form">
@@ -125,6 +131,34 @@
     </div>
 </div>
 </body>
+
+<script>
+    function validate(){
+        var fname = document.getElementsByName("firstname");
+        var lname = document.getElementsByName("lastname");
+        var idnum = document.getElementsByName("idnum");
+        var uname = document.getElementsByName("username");
+        var pswrd = document.getElementsByName("password");
+
+        var re_names = /^[A-Za-z]+$/;
+        var re_uname = /^[A-Za-z0-9]+$/;
+
+        if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
+            alert('Name must not have any numbers or special characters');
+            return false;
+        }
+        
+        if(!re_uname.test(uname[0].value)){
+            alert('User Name must not have any special characters');
+            return false;
+        }
+
+        if(isNaN(idnum[0].value)==true){
+            alert('ID Number must be in numbers');
+            return false;
+        }
+    }
+</script>
 </html>
 
 

@@ -43,7 +43,8 @@
             echo "</h1>";
 
             echo "<h2>";
-            echo $_SESSION['S_UserType'];
+            echo $_SESSION['S_IDNum']  ."<br>"; 
+            echo $_SESSION['S_UserType']; 
             echo "</h2>";
 
             echo "<h2>";

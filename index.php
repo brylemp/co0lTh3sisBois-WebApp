@@ -30,7 +30,7 @@
                 <div class="loginField">
                     <div class="loginText">
                         <form id="LOGINFORM" action="login.php" method="POST">
-                            <input type="text" placeholder="ID Number" name="username" required="required">
+                            <input type="text" placeholder="User Name" name="username" required="required">
                     </div>
                     <div class="loginText">
                         <input type="password" placeholder="Password" name="password" required="required">
