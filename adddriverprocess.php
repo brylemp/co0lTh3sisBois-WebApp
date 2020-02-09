@@ -21,12 +21,19 @@
     
     $temp = md5(time( ));
 
-    $sql="INSERT INTO `Driver_Accounts`(`RFID_UID`, `Fname`, `Lname`, `Driver_ID`) VALUES ('$temp','$fname','$lname','$driver_id')";
-    // $result = $conn->query($sql) or die($conn->error);
-    if($conn->query($sql)){
-        header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
+    $sql1="SELECT * FROM Driver_Accounts WHERE Driver_ID='$RFIDID'";
+    $result = $conn->query($sql1);
+    if ($result->num_rows == 1) {
+        header("Refresh:0; url=adddriverpage.php?error=".$RFIDID);
     }
     else{
-        header("Refresh:0; url=adddriverpage.php"); 
+        $sql="INSERT INTO `Driver_Accounts`(`RFID_UID`, `Fname`, `Lname`, `Driver_ID`) VALUES ('$RFIDID','$fname','$lname','$driver_id')";
+        // $result = $conn->query($sql) or die($conn->error);
+        if($conn->query($sql)){
+            header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
+        }
+        else{
+            header("Refresh:0; url=adddriverpage.php"); 
+        }
     }
 ?>

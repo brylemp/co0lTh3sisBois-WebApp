@@ -104,6 +104,13 @@ td, th{
     font-size: 50px;
 }
 
+.newuser .userform .headerform h2{
+    font-weight: 300;
+    font-size: 20px;
+    color: red;
+    margin-bottom: -24px;
+}
+
 .errortext{
     /* border: 1px solid red; */
     font-size: 12.5px;

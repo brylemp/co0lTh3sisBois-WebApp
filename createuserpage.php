@@ -82,6 +82,11 @@
             <div class="userform">
                 <div class="headerform">
                     <h1>Create Account</h1>
+                    <?php 
+                        if(isset($_GET['error'])){
+                            echo "<h2>Username ".$_GET['error']." already exists</h2>";    
+                        }
+                    ?>
                 </div>
                 <div class="card-body px-lg-5 pt-0">
                     <!-- Form -->
@@ -156,7 +161,6 @@
         var re_names = /^[A-Za-z]+$/;
         var re_uname = /^[A-Za-z0-9]+$/;
         
-
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
             // alert('Name must not have any numbers or special characters');
             document.getElementById("registerfname").className = "form-control is-invalid";

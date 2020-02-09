@@ -23,12 +23,21 @@
     $hashed_password=password_hash($pass, PASSWORD_DEFAULT);
 
 
-    $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `UName`, `Password`, `UserType`) VALUES('$fname','$lname','$idnum','$user','$hashed_password','$type')";
-    // $result = $conn->query($sql) or die($conn->error);
-    if($conn->query($sql)){
-        // header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
+    $sql1="SELECT * FROM User_Accounts WHERE UName='$user'";
+    $result = $conn->query($sql1);
+    if ($result->num_rows == 1) {
+        header("Refresh:0; url=createuserpage.php?error=".$user);
     }
     else{
-        // header("Refresh:0; url=createuserpage.php"); 
+        $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `UName`, `Password`, `UserType`) VALUES('$fname','$lname','$idnum','$user','$hashed_password','$type')";
+        // $result = $conn->query($sql) or die($conn->error);
+        if($conn->query($sql)){
+            header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
+        }
+        else{
+            header("Refresh:0; url=createuserpage.php"); 
+        }
     }
+
+    
 ?>
