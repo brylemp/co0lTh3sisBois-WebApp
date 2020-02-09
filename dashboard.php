@@ -34,7 +34,7 @@
 <div class="wrapper">
     <div class="sidebar"> <!-- SIDEBAR -->
         <?php 
-            // echo "<h2>Welcome,</h2>";
+            // echo "<h3>Welcome,</h3>";
 
             echo "<h1>";
             echo $_SESSION['S_lastname'].",".$_SESSION['S_firstname']; 
