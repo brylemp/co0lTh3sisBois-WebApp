@@ -25,6 +25,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
     <script src="js/jquery-3.4.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -34,8 +35,6 @@
 <div class="wrapper">
     <div class="sidebar"> <!-- SIDEBAR -->
         <?php 
-            // echo "<h3>Welcome,</h3>";
-
             echo "<h1>";
             echo $_SESSION['S_lastname'].",".$_SESSION['S_firstname']; 
             echo "</h1>";
@@ -45,12 +44,12 @@
             echo $_SESSION['S_UserType']; 
             echo "</h2>";
 
-            echo "<h2>";
+            echo "<h3>";
             echo date("F j, Y"); 
-            echo "</h2>";
+            echo "</h3>";
         ?>
         <ul>
-            <li class="active"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
+            <li class="driver active"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
                 $servername = "localhost";
                 $username = "root";
@@ -69,7 +68,7 @@
 
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo '<li><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
+                        echo '<li class="driver"><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
                     } 
                 } 
                 else {
@@ -77,11 +76,11 @@
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
-                    echo '<li><a href="adddriverpage.php">Add Driver</a></li>';
-                    echo '<li><a href="createuserpage.php">Create Account</a></li>';
+                    echo '<li class="add"><a href="adddriverpage.php">Add Driver</a></li>';
+                    echo '<li class="add"><a href="createuserpage.php">Create Account</a></li>';
                 }
                 
-                echo '<li><a href="logout.php">LOGOUT</a></li>';
+                echo '<li class="logout"><a href="logout.php">Logout</a></li>';
             ?>
         </ul>
     </div>

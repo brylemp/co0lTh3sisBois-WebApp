@@ -21,6 +21,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/newuser.css">
+    <link rel="stylesheet" href="css/sidebar.css">
     <title>USC Shuttle Disbursement</title>
 </head>
 <body>
@@ -36,12 +37,12 @@
             echo $_SESSION['S_UserType']; 
             echo "</h2>";
 
-            echo "<h2>";
+            echo "<h3>";
             echo date("F j, Y"); 
-            echo "</h2>";
+            echo "</h3>";
         ?>
         <ul>
-            <li><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
+            <li class="driver"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
                 $servername = "localhost";
                 $username = "root";
@@ -60,7 +61,7 @@
 
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo '<li><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
+                        echo '<li class="driver"><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
                     } 
                 } 
                 else {
@@ -68,11 +69,11 @@
                 }
 
                 if($_SESSION['S_UserType']=='Admin'){
-                    echo '<li class="active"><a href="adddriverpage.php">Add Driver</a></li>';
-                    echo '<li><a href="createuserpage.php">Create Account</a></li>';
+                    echo '<li class="add active"><a href="adddriverpage.php">Add Driver</a></li>';
+                    echo '<li class="add"><a href="createuserpage.php">Create Account</a></li>';
                 }
                 
-                echo '<li><a href="logout.php">LOGOUT</a></li>';
+                echo '<li class="logout"><a href="logout.php">Logout</a></li>';
             ?>
         </ul>
     </div>

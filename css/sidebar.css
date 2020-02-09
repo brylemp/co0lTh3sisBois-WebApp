@@ -1,0 +1,108 @@
+.wrapper .sidebar::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.wrapper .sidebar{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: rgb(67, 99, 56);
+    padding-top: 20px;
+    overflow: hidden;
+    overflow-y: overlay;
+}
+
+.wrapper .sidebar h1{
+    padding-left: 20px;
+    text-align: left;
+    font-weight: 100;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+.wrapper .sidebar h2{
+    padding-left: 20px;
+    text-align: left;
+    font-weight: lighter;
+    font-size: 15px;
+    color: white;
+}
+
+.wrapper .sidebar h3{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    text-align: left;
+    font-weight: lighter;
+    font-size: 15px;
+    color: white;
+}
+
+.wrapper .sidebar ul li{
+    text-align: left;
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    margin-left: -25%;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrapper .sidebar ul li.driver{
+    background-image: url(../images/drivericon.png); 
+    background-position: 25px 16px;
+    background-size: 10px;
+    background-repeat: no-repeat;
+}
+
+.wrapper .sidebar ul li.add{
+    background-image: url(../images/addicon.png); 
+    background-position: 25px 16px;
+    background-size: 10px;
+    background-repeat: no-repeat;
+}
+
+.wrapper .sidebar ul li.logout{
+    background-image: url(../images/logouticon.png); 
+    background-position: 25px 16px;
+    background-size: 13px;
+    background-repeat: no-repeat;
+}
+
+.wrapper .sidebar ul li a{
+    display: block;
+    height: 44px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    padding-top: 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.wrapper .sidebar ul li.active a{
+    color: rgba(255, 255, 255);
+}
+
+.wrapper .sidebar ul li.active{
+    border-left: 5px solid rgb(12, 139, 0);
+    padding-left: 45px;
+    background-position: 20px 16px;
+    background-color: rgba(0, 0, 0, 0.329);
+}
+
+.wrapper .sidebar ul li a:hover{
+    display: block;
+    padding-top: 10px;
+    height: 44px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+.wrapper .sidebar ul li:hover{
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 0.116);
+}
