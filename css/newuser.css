@@ -24,9 +24,9 @@ td, th{
 
 .newuser{
     /* border: 1px solid red; */
-    margin-left: 15%;
+    margin-left: 25%;
     margin-top: 20px;
-    width: 70%;
+    width: 50%;
     height: 90vh;
 }
 
@@ -40,7 +40,7 @@ td, th{
 }
 
 .newuser .userform .headerform h1{
-    font-weight: 300;
+    font-weight: lighter;
     font-size: 50px;
 }
 

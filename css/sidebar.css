@@ -5,7 +5,7 @@
 
 .wrapper .sidebar{
     position: fixed;
-    width: 200px;
+    width: 220px;
     height: 100%;
     background-color: rgb(67, 99, 56);
     padding-top: 20px;
@@ -14,7 +14,7 @@
 }
 
 .wrapper .sidebar h1{
-    padding-left: 20px;
+    padding-left: 25px;
     text-align: left;
     font-weight: 100;
     margin-bottom: 0px;
@@ -24,7 +24,7 @@
 }
 
 .wrapper .sidebar h2{
-    padding-left: 20px;
+    padding-left: 25px;
     text-align: left;
     font-weight: lighter;
     font-size: 15px;
@@ -32,8 +32,9 @@
 }
 
 .wrapper .sidebar h3{
-    padding-left: 20px;
-    padding-bottom: 25px;
+    padding-left: 25px;
+    padding-top: 20px;
+    padding-bottom: 5px;
     text-align: left;
     font-weight: lighter;
     font-size: 15px;
@@ -45,29 +46,29 @@
     list-style: none;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 50px;
-    margin-left: -25%;
+    padding-left: 55px;
+    margin-left: -22%;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .wrapper .sidebar ul li.driver{
     background-image: url(../images/drivericon.png); 
-    background-position: 25px 16px;
+    background-position: 30px 16px;
     background-size: 10px;
     background-repeat: no-repeat;
 }
 
 .wrapper .sidebar ul li.add{
     background-image: url(../images/addicon.png); 
-    background-position: 25px 16px;
+    background-position: 30px 16px;
     background-size: 10px;
     background-repeat: no-repeat;
 }
 
 .wrapper .sidebar ul li.logout{
     background-image: url(../images/logouticon.png); 
-    background-position: 25px 16px;
+    background-position: 30px 16px;
     background-size: 13px;
     background-repeat: no-repeat;
 }
@@ -87,8 +88,8 @@
 
 .wrapper .sidebar ul li.active{
     border-left: 5px solid rgb(12, 139, 0);
-    padding-left: 45px;
-    background-position: 20px 16px;
+    padding-left: 50px;
+    background-position: 25px 16px;
     background-color: rgba(0, 0, 0, 0.329);
 }
 

@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Create</button>
+                        <button class="btn btn-success btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Create</button>
                     </form>
                 </div>
             </div>
