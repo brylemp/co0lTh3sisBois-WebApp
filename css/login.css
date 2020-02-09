@@ -7,7 +7,7 @@ body {
 
 .loginImage{
     background-image: url(../images/loginBox.png); 
-    opacity: 0.9;
+    opacity: 1;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
