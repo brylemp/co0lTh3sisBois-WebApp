@@ -97,8 +97,12 @@
             <div class='outeroutertable'>
                 <div class='toparea'><div class='DriverID'>Driver ID: <?php echo "$selected_driver_ID";?></div> 
                 <div class='tab'>
-                    <button type='button' class='btn btn-success btn-lg' onclick='openhist();'>History</button>
-                    <button type='button' class='btn btn-success btn-lg' onclick='opentran();'>Transactions</button>
+                    <!-- <button type='button' class='btn btn-success btn-lg' onclick='openhist();'>History</button>
+                    <button type='button' class='btn btn-success btn-lg' onclick='opentran();'>Transactions</button> -->
+                    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                        <button type="button" id="HistoryButton" class="btn btn-success" onclick='openhist();'>History</button>
+                        <button type="button" id="TransactionButton" class="btn btn-outline-success" onclick='opentran();'>Transactions</button>
+                    </div>
                 </div>
             </div>
         <div id='History' class='tabcontent'>
@@ -216,24 +220,25 @@
 <script>
 
 function openhist() {
-    // alert('idiot');
     document.getElementById('Transactions').style.display = "none";
     document.getElementById('History').style.display = "block";
-    
+    document.getElementById('HistoryButton').className="btn btn-success";
+    document.getElementById('TransactionButton').className="btn btn-outline-success";
 }
 function opentran() {
-    // alert('idiot');
     document.getElementById('History').style.display = "none";
     document.getElementById('Transactions').style.display = "block";
+    document.getElementById('HistoryButton').className="btn btn-outline-success";
+    document.getElementById('TransactionButton').className="btn btn-success";
 }
 
 $('#ReceiptModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) 
-  var driID = button.data('did') 
-  var driDate = button.data('date') 
-  var modal = $(this)
-  modal.find('input[name="driver_id"]').val(driID);
-  modal.find('input[name="driver_date"]').val(driDate);
+    var button = $(event.relatedTarget) 
+    var driID = button.data('did') 
+    var driDate = button.data('date') 
+    var modal = $(this)
+    modal.find('input[name="driver_id"]').val(driID);
+    modal.find('input[name="driver_date"]').val(driDate);
 })
 
 </script>

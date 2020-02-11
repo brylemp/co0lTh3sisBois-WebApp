@@ -119,21 +119,27 @@ body{
 
 .wrapper .main .outeroutertable .toparea .DriverID{
     /* border: 1px solid black; */
-    width: 20%;
+    white-space: pre-wrap;      /* CSS3 */   
+    white-space: -moz-pre-wrap; /* Firefox */    
+    white-space: -pre-wrap;     /* Opera <7 */   
+    white-space: -o-pre-wrap;   /* Opera 7 */    
+    word-wrap: break-word;      /* IE */
+    width: 29.1%;
     padding-top: 8px;
 }
 
 .wrapper .main .outeroutertable .toparea .tab{
     /* border: 1px solid blue; */
-    display: flex;
-    width: 80%;
-    /* margin-left: %; */
+    text-align: center;
+    width: 58.1%;
 }
 
 .wrapper .main .outeroutertable .toparea .tab button{
     /* border: 1px solid red; */
-    width: 35%;
-    margin-right: 4%;
+    width: 21.1vw;
+    /* padding-left: 50%;
+    padding-right: 100%;
+    width: 100%; */
 }
 
 .wrapper .main .outeroutertable .NoRecord{
