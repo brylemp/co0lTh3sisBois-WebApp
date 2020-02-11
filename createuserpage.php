@@ -44,17 +44,7 @@
         <ul>
             <li class="driver"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "ourserver"; 
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if($conn->connect_error) {
-                    echo '<div class="title">FAIL</div>';
-                    die("Connection failed: ".$conn->connect_error);
-                } 
+                require 'SQL.php';
 
                 $sql = "SELECT * FROM Driver_Accounts ORDER BY `Driver_ID` ASC";
                 $result = $conn->query($sql);

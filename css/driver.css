@@ -136,10 +136,9 @@ body{
 
 .wrapper .main .outeroutertable .toparea .tab button{
     /* border: 1px solid red; */
-    width: 21.1vw;
-    /* padding-left: 50%;
-    padding-right: 100%;
-    width: 100%; */
+    /* width: 21.1vw; */
+    /* z-index: 0; */
+    width: 100%;
 }
 
 .wrapper .main .outeroutertable .NoRecord{

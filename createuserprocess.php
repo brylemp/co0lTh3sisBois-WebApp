@@ -8,11 +8,7 @@
         header("Refresh:0; url=dashboard.php?searchdate=".date('Y-m-j'));
         exit();
     }
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "ourserver"; 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    require 'SQL.php';
 
     $fname=$_POST["firstname"];
     $lname=$_POST["lastname"];

@@ -43,17 +43,7 @@
         <ul>
             <li class="driver"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "ourserver"; 
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if($conn->connect_error) {
-                    echo '<div class="title">FAIL</div>';
-                    die("Connection failed: ".$conn->connect_error);
-                } 
+                require 'SQL.php';
 
                 $selected_driver = 0; //Prevent Errors
                 if (isset($_GET['driver']) ) { //Get value from line 57
@@ -99,7 +89,7 @@
                 <div class='tab'>
                     <!-- <button type='button' class='btn btn-success btn-lg' onclick='openhist();'>History</button>
                     <button type='button' class='btn btn-success btn-lg' onclick='opentran();'>Transactions</button> -->
-                    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                    <div class="btn-group btn-group-lg btn-block" role="group">
                         <button type="button" id="HistoryButton" class="btn btn-success" onclick='openhist();'>History</button>
                         <button type="button" id="TransactionButton" class="btn btn-outline-success" onclick='opentran();'>Transactions</button>
                     </div>
