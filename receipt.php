@@ -53,7 +53,7 @@
             echo "</h3>";
         ?>
         <ul>
-            <li class="add"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
+            <li class="driver"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
                 $servername = "localhost";
                 $username = "root";
