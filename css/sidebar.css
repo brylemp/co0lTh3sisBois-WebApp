@@ -9,8 +9,9 @@
     height: 100%;
     background-color: rgb(67, 99, 56);
     padding-top: 20px;
+    z-index: 2;
     overflow: hidden;
-    overflow-y: overlay;
+    /* overflow-y: overlay; */
 }
 
 .wrapper .sidebar h1{

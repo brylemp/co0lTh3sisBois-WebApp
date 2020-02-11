@@ -4,11 +4,7 @@
         header("Refresh:0; url=index.php");
         exit();
     }
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "ourserver"; 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    require 'SQL.php';
 
     $source=$_POST["source"];
     $dri_id=$_POST["driver_id"];
