@@ -10,8 +10,8 @@
     background-color: rgb(67, 99, 56);
     padding-top: 20px;
     z-index: 2;
-    overflow: hidden;
-    /* overflow-y: overlay; */
+    overflow: auto;
+    overflow-y: overlay;
 }
 
 .wrapper .sidebar h1{
@@ -62,6 +62,13 @@
 
 .wrapper .sidebar ul li.add{
     background-image: url(../images/addicon.png); 
+    background-position: 30px 16px;
+    background-size: 10px;
+    background-repeat: no-repeat;
+}
+
+.wrapper .sidebar ul li.sub{
+    background-image: url(../images/subicon.png); 
     background-position: 30px 16px;
     background-size: 10px;
     background-repeat: no-repeat;

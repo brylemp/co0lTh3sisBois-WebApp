@@ -60,6 +60,7 @@
 
                 if($_SESSION['S_UserType']=='Admin'){
                     echo '<li class="add"><a href="adddriverpage.php">Add Driver</a></li>';
+                    echo '<li class="sub"><a href="removedriverpage.php">Remove Driver</a></li>';
                     echo '<li class="add active"><a href="createuserpage.php">Create Account</a></li>';
                 }
                 
