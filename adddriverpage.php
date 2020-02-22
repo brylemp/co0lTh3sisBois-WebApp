@@ -62,6 +62,7 @@
                     echo '<li class="add active"><a href="adddriverpage.php">Add Driver</a></li>';
                     echo '<li class="sub"><a href="removedriverpage.php">Remove Driver</a></li>';
                     echo '<li class="add"><a href="createuserpage.php">Create Account</a></li>';
+                    echo '<li class="sub"><a href="deleteuserpage.php">Delete Account</a></li>';
                 }
                 
                 echo '<li class="logout"><a href="logout.php">Logout</a></li>';

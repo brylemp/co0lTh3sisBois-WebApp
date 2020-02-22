@@ -91,12 +91,12 @@ body{
 
 .wrapper .main .outeroutertable .toparea{
     /* border: 1px solid black; */
-    display: flex;
+    /* display: flex; */
     margin: 0 auto;
     width: 81%;
-    text-align: left;
-    padding-top: 25px; 
-    padding-bottom: 20px; 
+    text-align: center;
+    padding-top: 20px; 
+    padding-bottom: 0px; 
 }
 
 .wrapper .main .outeroutertable .NoRecord{
@@ -139,4 +139,22 @@ body{
 
 .wrapper .main .outeroutertable td:last-child{
     width: 50%;
+}
+
+.main .outeroutertable .toparea .headerform {
+    /* border: 1px solid black; */
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.main .outeroutertable .toparea .headerform h1{
+    font-weight: lighter;
+    font-size: 50px;
+}
+
+.main .outeroutertable .toparea .headerform h2{
+    font-weight: 300;
+    font-size: 20px;
+    color: red;
+    margin-bottom: -24px;
 }

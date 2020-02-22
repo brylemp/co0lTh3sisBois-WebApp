@@ -101,6 +101,10 @@
     background-color: rgba(0, 0, 0, 0.329);
 }
 
+.wrapper .sidebar ul li.active:hover{
+    background-color: rgba(0, 0, 0, 0.329);
+}
+
 .wrapper .sidebar ul li a:hover{
     display: block;
     padding-top: 10px;

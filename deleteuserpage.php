@@ -67,9 +67,9 @@
 
                 if($_SESSION['S_UserType']=='Admin'){
                     echo '<li class="add"><a href="adddriverpage.php">Add Driver</a></li>';
-                    echo '<li class="sub active"><a href="removedriverpage.php">Remove Driver</a></li>';
+                    echo '<li class="sub"><a href="removedriverpage.php">Remove Driver</a></li>';
                     echo '<li class="add"><a href="createuserpage.php">Create Account</a></li>';
-                    echo '<li class="sub"><a href="deleteuserpage.php">Delete Account</a></li>';
+                    echo '<li class="sub active"><a href="deleteuserpage.php">Delete Account</a></li>';
                 }
                 
                 echo '<li class="logout"><a href="logout.php">Logout</a></li>';
@@ -88,12 +88,17 @@
                     if(isset($_GET["error"])){
                         if ($_GET["error"] == 1){
                             echo '<div class="alert alert-danger" role="alert">
-                            Failed to remove driver. Wrong password!
+                            Failed to delete user. Wrong password!
+                            </div>';
+                        }
+                        else if ($_GET["error"] == 2){
+                            echo '<div class="alert alert-danger" role="alert">
+                            Cannot delete your own account
                             </div>';
                         }
                         else{
                             echo '<div class="alert alert-success" role="alert">
-                            Successfully removed driver '.$_GET["error"].'.
+                            Successfully delete user '.$_GET["error"].'.
                             </div>';
                         }
                     }
@@ -101,28 +106,28 @@
                 </div>
             </div>
         <?php
-            $sql = "SELECT * FROM Driver_Accounts ORDER BY Driver_ID ASC";
+            $sql = "SELECT * FROM User_Accounts ORDER BY UName ASC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 echo "<div class='fakeoutertable'><table>
                         <tr>
-                            <th>Driver ID</th>
+                            <th>ID Number</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>RFID UID</th>
+                            <th>Username</th>
                             <th></th>
                     </tr>
                     </table></div>
                     <div class='outertable'>
                     <table>";
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" .$row["Driver_ID"] ."</td>";
-                    echo "<td>" .$row["Fname"] ."</td>";
-                    echo "<td>" .$row["Lname"] ."</td>";
-                    echo "<td>" .$row["RFID_UID"] ."</td>";
+                    echo "<tr><td>" .$row["IDNum"] ."</td>";
+                    echo "<td>" .$row["FName"] ."</td>";
+                    echo "<td>" .$row["LName"] ."</td>";
+                    echo "<td>" .$row["UName"] ."</td>";
                     
-                    echo '<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReceiptModal" data-did="'.$row["Driver_ID"].'" data-dname="'.$row["Fname"].'">Delete</button></td></tr>';
+                    echo '<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReceiptModal" data-unm="'.$row["UName"].'">Delete</button></td></tr>';
                     echo '<div class="modal fade" id="ReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -133,13 +138,12 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form name="passvalues" action="removedriverprocess.php" method="POST">
+                            <form name="passvalues" action="deleteuserprocess.php" method="POST">
                                 <input class="form-control" type="password" placeholder="Password" name="confirmpw" required="required">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <input type="hidden" name="driver_id">
-                            <input type="hidden" name="driver_name">
+                            <input type="hidden" name="user_name">
                             <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
                             <input type="submit" class="btn btn-success" value="Confirm" id="button1">
                             </form>
@@ -162,11 +166,9 @@
 <script>
 $('#ReceiptModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var driID = button.data('did') 
-    var driName = button.data('dname') 
+    var usrName = button.data('unm') 
     var modal = $(this)
-    modal.find('input[name="driver_id"]').val(driID);
-    modal.find('input[name="driver_name"]').val(driName);
+    modal.find('input[name="user_name"]').val(usrName);
 })
 </script>
 </html>
