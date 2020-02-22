@@ -75,9 +75,20 @@
             <div class="userform">
                 <div class="headerform">
                     <h1>Add New Driver</h1>
-                    <?php 
-                        if(isset($_GET['error'])){
-                            echo "<h2>RFID ".$_GET['error']." already exists</h2>";    
+                </div>
+                <div class="status">
+                    <?php
+                        if(isset($_GET["error"])){
+                            if ($_GET["error"]==1){
+                                echo '<div class="alert alert-success" role="alert">
+                                Successfully created user!
+                                </div>';
+                            }
+                            else{
+                                echo '<div class="alert alert-danger" role="alert">
+                                User '.$_GET["error"].' already exists.
+                                </div>';
+                            }
                         }
                     ?>
                 </div>
