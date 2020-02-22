@@ -36,5 +36,4 @@
         header("Refresh:0; url=createuserpage.php?error=3"); 
     }
 
-    
 ?>
