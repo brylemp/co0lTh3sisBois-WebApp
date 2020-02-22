@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2020 at 05:26 PM
+-- Generation Time: Feb 22, 2020 at 12:12 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -48,7 +48,7 @@ INSERT INTO `DriverInformation` (`uid`, `Driver_ID`, `Date`, `Driver_Name`, `Dri
 (3, '13', '2020-01-18', 'Gian', 'Not Disbursed', 1205, 50),
 (4, '13', '2020-01-19', 'Gian', 'Not Disbursed', 1400, 20),
 (5, '14', '2020-01-18', 'Jon', 'Not Disbursed', 1200, 60),
-(6, '14', '2020-01-19', 'Jon', 'Not Disbursed', 1500, 30),
+(6, '14', '2020-01-19', 'Jon', 'Disbursed', 1500, 30),
 (7, '15', '2020-01-18', 'Francis', 'Not Disbursed', 1600, 10),
 (8, '15', '2020-01-19', 'Francis', 'Not Disbursed', 900, 10),
 (9, '16', '2020-01-18', 'Christian', 'Not Disbursed', 1500, 60),
@@ -102,7 +102,8 @@ INSERT INTO `DriverReceipts` (`Disburse_Date`, `Date`, `Time`, `Receipt_Num`, `B
 ('2020-01-27', '2020-02-02', '12:25:50AM', 280, 'Sabuero,Daisy', 1850, '13'),
 ('2020-01-27', '2020-02-03', '12:36:24AM', 281, 'Sabuero,Daisy', 1250, '13'),
 ('2020-01-27', '2020-02-01', '12:37:40AM', 282, 'Patalinghug,Bryle', 1340, '13'),
-('2020-01-27', '2020-01-19', '03:21:50PM', 283, 'Patalinghug,Bryle', 1600, '16');
+('2020-01-27', '2020-01-19', '03:21:50PM', 283, 'Patalinghug,Bryle', 1600, '16'),
+('2020-02-22', '2020-01-19', '04:48:04PM', 284, 'Patalinghug,Bryle', 1500, '14');
 
 -- --------------------------------------------------------
 
@@ -192,6 +193,7 @@ CREATE TABLE `User_Accounts` (
   `FName` varchar(256) NOT NULL,
   `LName` varchar(256) NOT NULL,
   `IDNum` varchar(256) NOT NULL,
+  `UName` varchar(255) NOT NULL,
   `Password` varchar(256) NOT NULL,
   `UserType` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -200,10 +202,9 @@ CREATE TABLE `User_Accounts` (
 -- Dumping data for table `User_Accounts`
 --
 
-INSERT INTO `User_Accounts` (`FName`, `LName`, `IDNum`, `Password`, `UserType`) VALUES
-('Super', 'Admin', '1', '$2y$10$7p7fJwzpc4nXsfPcaDavmucNqF2TSgSmJHtZYH1CYRU41rDXbAP6W', 'Admin'),
-('Daisy', 'Sabuero', '15101819', '$2y$10$XGZwzGYS3MJCkmU8OTQRFuIEeeXpq2XQI0MCU3h5ks2jfGj646.zm', 'User'),
-('Bryle', 'Patalinghug', '15101869', '$2y$10$lL9H2zVsLszomHBQJ30xHuhAPQMLsmdhTGvVquTUdiIcuK5c.Sg62', 'Admin');
+INSERT INTO `User_Accounts` (`FName`, `LName`, `IDNum`, `UName`, `Password`, `UserType`) VALUES
+('Super', 'Admin', '1', 'superadmin', '$2y$10$7p7fJwzpc4nXsfPcaDavmucNqF2TSgSmJHtZYH1CYRU41rDXbAP6W', 'Admin'),
+('Bryle', 'Patalinghug', '15101869', 'brylemp', '$2y$10$rEtR2fZtC5QC5LOs4u2EA.c6PPUPGCOwAbyO1ipwbPt6Mp3P1EWKO', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -254,7 +255,7 @@ ALTER TABLE `DriverInformation`
 -- AUTO_INCREMENT for table `DriverReceipts`
 --
 ALTER TABLE `DriverReceipts`
-  MODIFY `Receipt_Num` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=284;
+  MODIFY `Receipt_Num` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=285;
 
 --
 -- AUTO_INCREMENT for table `PassengerTransactions`
