@@ -78,15 +78,20 @@
                 </div>
                 <div class="status">
                     <?php
-                        if(isset($_GET["error"])){
-                            if ($_GET["error"]==1){
+                        if(isset($_GET["error"]) && isset($_GET["exist"])){
+                            if ($_GET["error"]==3){
                                 echo '<div class="alert alert-success" role="alert">
-                                Successfully created user!
+                                Successfully Added User!
                                 </div>';
                             }
-                            else{
+                            else if ($_GET["error"]==1){
                                 echo '<div class="alert alert-danger" role="alert">
-                                User '.$_GET["error"].' already exists.
+                                ID number '.$_GET["exist"].' already exists.
+                                </div>';
+                            }
+                            else if ($_GET["error"]==2){
+                                echo '<div class="alert alert-danger" role="alert">
+                                Username '.$_GET["exist"].' already exists.
                                 </div>';
                             }
                         }

@@ -20,14 +20,20 @@
 
 
     $sql1="SELECT * FROM User_Accounts WHERE UName='$user'";
-    $result = $conn->query($sql1);
-    if ($result->num_rows == 1) {
-        header("Refresh:0; url=createuserpage.php?error=$user");
+    $result1 = $conn->query($sql1);
+    $row1 = $result1->fetch_assoc();
+    if ($result1->num_rows == 1) {
+        if($row1['IDNum']==$idnum){
+            header("Refresh:0; url=createuserpage.php?error=1&exist=$idnum");
+        }
+        else if($row1['UName']==$user){
+            header("Refresh:0; url=createuserpage.php?error=2&exist=$user");
+        }
     }
     else{
         $sql="INSERT INTO `User_Accounts`(`FName`, `LName`, `IDNum`, `UName`, `Password`, `UserType`) VALUES('$fname','$lname','$idnum','$user','$hashed_password','$type')";
-        // $result = $conn->query($sql) or die($conn->error);
-        header("Refresh:0; url=createuserpage.php?error=0"); 
+        $result = $conn->query($sql) or die($conn->error);
+        header("Refresh:0; url=createuserpage.php?error=3"); 
     }
 
     

@@ -79,15 +79,22 @@
                 <div class="status">
                     <?php
                         if(isset($_GET["error"])){
-                            if ($_GET["error"]==1){
+                            if ($_GET["error"]==3){
                                 echo '<div class="alert alert-success" role="alert">
-                                Successfully created user!
+                                Successfully Added Driver!
                                 </div>';
                             }
-                            else{
-                                echo '<div class="alert alert-danger" role="alert">
-                                User '.$_GET["error"].' already exists.
-                                </div>';
+                            else if(isset($_GET["exist"])){
+                                if ($_GET["error"]==1){
+                                    echo '<div class="alert alert-danger" role="alert">
+                                    ID number '.$_GET["exist"].' already exists.
+                                    </div>';
+                                }
+                                else if ($_GET["error"]==2){
+                                    echo '<div class="alert alert-danger" role="alert">
+                                    RFID '.$_GET["exist"].' already exists.
+                                    </div>';
+                                }
                             }
                         }
                     ?>
