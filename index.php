@@ -29,11 +29,21 @@
             <div class="loginImage">  
                 <div class="loginField">
                     <div class="loginText">
-                        <form id="LOGINFORM" action="login.php" method="POST">
-                            <input type="text" placeholder="User Name" name="username" required="required">
+                        <form id="LOGINFORM" action="login.php" method="POST" autocomplete="off">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><div class="usericon"></div></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="User Name" name="username" required="required" autocomplete="none">
+                        </div>   
                     </div>
                     <div class="loginText">
-                        <input type="password" placeholder="Password" name="password" required="required">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><div class="passicon"></div></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+                        </div> 
                     </div>
                     <div class="loginButton">
                             <div class="text-center"><input type="submit" class="btn btn-light text-center" value="Login" id="button1"></div>

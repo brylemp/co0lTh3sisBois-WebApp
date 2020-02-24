@@ -18,42 +18,48 @@ body {
     width: 100%;
     position: relative;
     padding-top: 50%;
+    
 }
 
 .loginText{
     /* border: solid red; */
-    width: 100%;
+    margin: 0 auto;
+    width: 40%;
     height: 50px;
     padding-bottom: 5%;
+    padding-left: 0px;
     text-align: center;
 }
 
-.loginText input[type=text] {
-    border: 1px solid rgb(155, 155, 155);
-    background-color: white;
+.loginText .usericon {
+    /* border: 1px solid red; */
     background-image: url(../images/unameicon.png);
-    background-size: 28px;   
-    background-position: -1px -1px;
+    background-size: 15px;   
     background-repeat: no-repeat;
-    padding-left: 30px;
+    background-position:center center;
+    float:right;
+    width:20px;
+    height:20px;
+    margin-top:2px;
 }
 
-.loginText input[type=password] {
-    border: 1px solid rgb(155, 155, 155);
-    background-color: white;
+.loginText .passicon {
+    /* border: 1px solid red; */
     background-image: url(../images/pwicon.png);
-    background-size: 15px;   
-    background-position: 7px 6px;
+    background-size: 18px;   
     background-repeat: no-repeat;
-    padding-left: 30px;
+    background-position:center center;
+    float:right;
+    width:20px;
+    height:20px;
 }
+
 
 .loginButton{
     /* border: solid aqua; */
     width: 100%;
     padding-bottom: 15%;
 }
-
 
 @media (min-width: 1600px) { /* Big Up */
     .spacer1{
