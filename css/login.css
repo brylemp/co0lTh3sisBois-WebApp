@@ -1,16 +1,24 @@
 body {
-    background-image: url(../images/loginBG.png);
+    background-image: url(../images/loginBox2.png);
     background-size: cover;                
     background-repeat: no-repeat;
     background-position: center top;
 }
 
+.spacer1{
+    /* border: solid blue; */
+    height: 18vh;
+}
+
 .loginImage{
+    /* border: solid blue; */
     background-image: url(../images/loginBox.png); 
     opacity: 1;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .loginField{
@@ -18,7 +26,6 @@ body {
     width: 100%;
     position: relative;
     padding-top: 50%;
-    
 }
 
 .loginText{
@@ -61,76 +68,9 @@ body {
     padding-bottom: 15%;
 }
 
-@media (min-width: 1600px) { /* Big Up */
-    .spacer1{
-        width: 100%;
-        /* border: solid blue; */
-        margin-top: 17%;
-    }
-
-}
-
 @media (min-width: 992px) and (max-width: 1599px) { /* 992 - 1599 */
-    .spacer1{
-        width: 100%;
-        /* border: solid aqua; */
-        margin-top: 14%;
-    }
-
-    .loginField{
-        padding-top: 35%;
-    }
-
-    .loginButton{
-        padding-bottom: 5%;
+    .loginImage{
+        width: 75%;
     }
 }
 
-@media (min-width: 768px) and (max-width: 991px) { /* 768 - 850 */
-    .spacer1{
-        width: 100%;
-        /* border: solid green; */
-        margin-top: 14%;
-    }
-}
-
-@media (min-width: 576px) and (max-width: 767px) { /* 576 - 767 */
-    .spacer1{
-        width: 100%;
-        /* border: solid red; */
-        margin-top: 15%;
-    }
-
-    .loginField{
-        padding-top: 40%;
-    }
-
-    .loginText{
-        margin-bottom: -1%;
-    }
-
-    .loginButton{
-        margin-bottom: 2%;
-    }
-}
-
-@media (max-width: 575px) { /* mobile! */
-    .spacer1{
-        width: 100%;
-        /* border: solid red; */
-        margin-top: 10%;
-    }
-
-    .loginField{
-        padding-top: 30%;
-    }
-
-    .loginText{
-        margin-bottom: -2%;
-    }
-
-    .loginButton{
-        padding-bottom: 5%;
-    }
-
-}

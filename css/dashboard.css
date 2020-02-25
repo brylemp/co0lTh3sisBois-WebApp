@@ -2,11 +2,6 @@ td, th{
     width: 15%;
 }
 
-body{
-    overflow-x: auto;
-    white-space:nowrap; 
-}
-
 .wrapper{
     /* border: 1px solid red; */
     width: 100%;
