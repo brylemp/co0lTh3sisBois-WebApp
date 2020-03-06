@@ -125,12 +125,14 @@
                     </tr>
                 </table>
                 </div>
-                <p> Received By _____________________________
-                    ___________________________________________
+                <p> Received By ________________________                  
                 </p>
             </div>
-            <div class="PrintButton"><button type="button" class="btn btn-secondary" onclick="Back()">Back</button><button type="button" class="btn btn-success" onclick="PrintElem()">Print</button></div>
-            </div>';
+            <div class="PrintButton">
+                <button type="button" class="btn btn-secondary" onclick="Back()">Back</button>
+                <button type="button" class="btn btn-success" onclick="PrintElem()">Print</button>
+            </div>
+        </div>';
     ?>
     
 </div>
