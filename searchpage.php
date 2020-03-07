@@ -111,7 +111,10 @@
                 </div>
             </div>
         <?php
-            $sql = "SELECT * FROM Driver_Accounts WHERE (`Driver_ID` LIKE '%".$_GET['searchthis']."%') or (`Fname` LIKE '%".$_GET['searchthis']."%') or (`Lname` LIKE '%".$_GET['searchthis']."%') or (`RFID_UID` LIKE '%".$_GET['searchthis']."%') ORDER BY Driver_ID ASC";
+            $raw = $_GET['searchthis'];
+            $search = explode(" ", $raw);
+            $sql = "SELECT * FROM Driver_Accounts WHERE (`Driver_ID` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`Fname` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`Lname` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`RFID_UID` LIKE '%".$search[0]."%' or '%".$search[1]."%') 
+            ORDER BY Driver_ID ASC";
             
             $result = $conn->query($sql);
 
