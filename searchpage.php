@@ -79,7 +79,7 @@
                     echo '<li class="add"><a href="adddriverpage.php">Add Driver</a></li>';
                     echo '<li class="sub"><a href="removedriverpage.php">Remove Driver</a></li>';
                     echo '<li class="add"><a href="createuserpage.php">Create Account</a></li>';
-                    echo '<li class="sub active"><a href="deleteuserpage.php">Delete Account</a></li>';
+                    echo '<li class="sub"><a href="deleteuserpage.php">Delete Account</a></li>';
                 }
                 
                 echo '<li class="logout"><a href="logout.php">Logout</a></li>';
@@ -91,24 +91,19 @@
         <div class='outeroutertable'>
             <div class='toparea'>
                 <div class="headerform">
-                    <h1>Delete Account</h1>
+                    <h1>Search Results</h1>
                 </div>
                 <div class="status">
                 <?php
                     if(isset($_GET["error"])){
                         if ($_GET["error"] == 1){
                             echo '<div class="alert alert-danger" role="alert">
-                            Failed to delete user. Wrong password!
-                            </div>';
-                        }
-                        else if ($_GET["error"] == 2){
-                            echo '<div class="alert alert-danger" role="alert">
-                            Cannot delete your own account
+                            Failed to remove driver. Wrong password!
                             </div>';
                         }
                         else{
                             echo '<div class="alert alert-success" role="alert">
-                            Successfully delete user '.$_GET["error"].'.
+                            Successfully removed driver '.$_GET["error"].'.
                             </div>';
                         }
                     }
@@ -116,51 +111,34 @@
                 </div>
             </div>
         <?php
-            $sql = "SELECT * FROM User_Accounts ORDER BY UName ASC";
+            $sql = "SELECT * FROM Driver_Accounts WHERE (`Driver_ID` LIKE '%".$_GET['searchthis']."%') or (`Fname` LIKE '%".$_GET['searchthis']."%') or (`Lname` LIKE '%".$_GET['searchthis']."%') or (`RFID_UID` LIKE '%".$_GET['searchthis']."%') ORDER BY Driver_ID ASC";
+            
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 echo "<div class='fakeoutertable'><table>
                         <tr>
-                            <th>ID Number</th>
+                            <th>Driver ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Username</th>
+                            <th>RFID UID</th>
                             <th></th>
                     </tr>
                     </table></div>
                     <div class='outertable'>
                     <table>";
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" .$row["IDNum"] ."</td>";
-                    echo "<td>" .$row["FName"] ."</td>";
-                    echo "<td>" .$row["LName"] ."</td>";
-                    echo "<td>" .$row["UName"] ."</td>";
+                    echo "<tr><td>" .$row["Driver_ID"] ."</td>";
+                    echo "<td>" .$row["Fname"] ."</td>";
+                    echo "<td>" .$row["Lname"] ."</td>";
+                    echo "<td>" .$row["RFID_UID"] ."</td>";
                     
-                    echo '<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ReceiptModal" data-unm="'.$row["UName"].'">Delete</button></td></tr>';
-                    echo '<div class="modal fade" id="ReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Confirm Password</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form name="passvalues" action="deleteuserprocess.php" method="POST">
-                                <input class="form-control" type="password" placeholder="Password" name="confirmpw" required="required">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <input type="hidden" name="user_name">
-                            <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
-                            <input type="submit" class="btn btn-success" value="Confirm" id="button1">
-                            </form>
-                        </div>
-                        </div>
-                    </div>
-                    </div>';
+                    echo '<td><form action="driver.php">
+                                    <input type="hidden" name="driver" value="'.$row['Fname'].'">
+                                    <input type="hidden" name="id" value="'.$row['Driver_ID'].'">
+                                    <input type="submit" class="btn btn-success" value="Go to Driver"></input>
+                                </form>
+                            </td></tr>';
 
                 }
                 echo "</table></div>";    
@@ -173,12 +151,4 @@
     </div>
 </div>
 </body>
-<script>
-$('#ReceiptModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) 
-    var usrName = button.data('unm') 
-    var modal = $(this)
-    modal.find('input[name="user_name"]').val(usrName);
-})
-</script>
 </html>

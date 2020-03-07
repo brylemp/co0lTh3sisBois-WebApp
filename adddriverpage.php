@@ -41,6 +41,16 @@
             echo date("F j, Y"); 
             echo "</h3>";
         ?>
+        <div class="search">
+            <form action="searchpage.php">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control-sm" placeholder="Search" name="searchthis">
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit"><div class="scicon"></div></button>  
+                </div>
+            </div>
+            </form>
+        </div>
         <ul>
             <li class="driver"><a href="dashboard.php?searchdate=<?php echo date('Y-m-j');?>">All</a></li>
             <?php
