@@ -3,6 +3,10 @@ td, th{
 }
 
 @media print{
+    @page {
+        margin: 0in;
+        size: 130mm 170mm;
+    }
     body * { 
         visibility: visible; 
     }
@@ -13,6 +17,7 @@ td, th{
         visibility: hidden; 
     }
     .receiptdiv {
+        height: 200px;
         z-index: 2;
         position: absolute; 
         top: -50px; 
