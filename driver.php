@@ -158,6 +158,7 @@
                     else{
                         echo '<td><form action="receipt.php" method="GET">
                                     <input type="hidden" name="ID" value="'.$row['Driver_ID'].'">
+                                    <input type="hidden" name="NAME" value="'.$row['Driver_Name'].'">
                                     <input type="hidden" name="Date" value="'.$row['Date'].'">
                                     <input type="submit" class="btn btn-outline-success" value=" Receipt "></input>
                                 </form>

@@ -5,7 +5,10 @@
         exit();
     }
     require 'SQL.php';
-
+    require __DIR__ . '/escpos/vendor/autoload.php';
+    use Mike42\Escpos\Printer;
+    use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+    $connector = new WindowsPrintConnector("BIXOLON SRP-352plus");
     $source=$_POST["source"];
     $dri_id=$_POST["driver_id"];
     $acc_id=$_POST["account_id"];
@@ -32,6 +35,84 @@
         $sql4 = "INSERT INTO `DriverReceipts`(`Disburse_Date`, `Date`, `Time`, `Bursar_Officer`, `Shuttle_Disbursement`, `Driver_ID`) VALUES ('$Da','$dri_date','$T','$name',$TA,'$DI')";
         $result4 = $conn->query($sql4) or die($conn->error);
 
+        class item{
+            private $name;
+            private $price;
+            private $dollarSign;
+
+            public function __construct($name = '', $price = '', $dollarSign = false){
+                $this -> name = $name;
+                $this -> price = $price;
+                $this -> dollarSign = $dollarSign;
+            }
+            
+            public function __toString(){
+                $rightCols = 18;
+                $leftCols = 30;
+                if ($this -> dollarSign) {
+                    $leftCols = $leftCols / 2 - $rightCols / 2;
+                }
+                $left = str_pad($this -> name, $leftCols) ;
+                
+                $sign = ($this -> dollarSign ? ' ' : '');
+                $right = str_pad($sign . $this -> price, $rightCols, ' ', STR_PAD_LEFT);
+                return "$left$right\n";
+            }
+        }
+
+        $sql5="SELECT * FROM `DriverReceipts` WHERE Driver_ID='$DI' AND Date='$dri_date'";
+        $result5 = $conn->query($sql5);
+        $row5 = $result5->fetch_assoc();
+        /* Information for the receipt */
+        $items = array(
+            new item("Date", $row5["Disburse_Date"]),
+            new item("Time", $row5["Time"]),
+            new item("Receipt #", $row5["Receipt_Num"]),
+            new item("Bursar Officer", $row5["Bursar_Officer"]),
+            new item("Driver ID #", $row5["Driver_ID"]),
+        );
+        $AMOUNT = "P".$row5['Shuttle_Disbursement'];
+        $total = new item('Disbursement', $AMOUNT);
+
+        for($i=0;$i<=1;$i++){
+            $printer = new Printer($connector);
+
+            /* Name of shop */
+            $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+            $printer -> setJustification(Printer::JUSTIFY_CENTER);
+            $printer -> text("SHUTTLE DISBURSEMENT\n RECEIPT\n");
+            $printer -> selectPrintMode();
+            $printer -> text("________________________________________________");
+            $printer -> feed();
+
+            /* Items */
+            $printer -> setJustification(Printer::JUSTIFY_LEFT);
+            $printer -> setEmphasis(true);
+            $printer -> text(new item('', ' '));
+            $printer -> setEmphasis(false);
+            foreach ($items as $item) {
+                $printer -> text($item);
+            }
+            $printer -> setEmphasis(true);
+            $printer -> text("Shuttle\n");
+            $printer -> text($total);
+            $printer -> setEmphasis(false);
+            $printer -> feed();
+
+            /* Footer */
+            $printer -> feed(2);
+            $printer -> setJustification(Printer::JUSTIFY_CENTER);
+            $printer -> text("__________________________________\n");
+            $printer -> text("Signature over printed name\n");
+            $printer -> feed(2);
+            $printer -> text("\n");
+
+            /* Cut the receipt and open the cash drawer */
+            $printer -> cut();
+
+            $printer -> close();
+        }
+        
         header("Refresh:0; url=receipt.php?ID=".$dri_id."&Date=".$dri_date); 
         exit();
     }

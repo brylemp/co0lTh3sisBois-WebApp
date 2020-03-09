@@ -5,7 +5,7 @@ td, th{
 @media print{
     @page {
         margin: 0in;
-        size: 130mm 170mm;
+        size: 80mm 80mm;
     }
     body * { 
         visibility: visible; 
@@ -18,10 +18,10 @@ td, th{
     }
     .receiptdiv {
         height: 200px;
-        z-index: 2;
+        z-index: 3;
         position: absolute; 
-        top: -50px; 
-        left: -343px; 
+        top: -60px; 
+        left: -313px; 
     }
     .wrapper .main .receiptdiv{
         visibility: hidden;
@@ -92,9 +92,12 @@ td, th{
 }
 
 .wrapper .main .receiptdiv p{
+    border: solid black;
+    border-width: 0 0 1px 0;
+    padding-bottom: 45px;
     font-size: 22px;
     font-weight: bold;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
 }
 
 .wrapper .main .receiptdiv .rbody2 table td{
