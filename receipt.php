@@ -103,7 +103,7 @@
         $result2 = $conn->query($sql2) or die($conn->error);
         $row2 = $result2->fetch_assoc();
         echo '<div class="receiptdiv"> 
-                <div class="rheader"><b>SHUTTLE DISBURSEMENT RECEIPT</b></div>
+                <div class="rheader"><b>SHUTTLE DISBURSEMENT</br>RECEIPT</b></div>
                 <div class="rbody">
                     <table>
                         <tr>
@@ -122,23 +122,17 @@
                             <th>Bursar Officer:</th>
                             <td>'.$row2['Bursar_Officer'].'</td>
                         </tr>
+                        <tr>
+                            <th>Driver ID #:</th>
+                            <td>'.$row2["Driver_ID"].'</td>
+                        </tr>
+                        <tr>
+                            <th>Shuttle Disbursement:</th>
+                            <td>₱'.$row2["Shuttle_Disbursement"].'</td>
+                        </tr>
                     </table>
                 </div>
-                <div class="rbody2">
-                <table>
-                    <tr>
-                        <th>Shuttle Disbursement:</th>
-                        <td>₱'.$row2["Shuttle_Disbursement"].'</td>
-                    </tr>
-                    <tr>
-                        <th>Driver ID #:</th>
-                        <td>'.$row2["Driver_ID"].'</td>
-                    </tr>
-                </table>
-                </div>
-                <p> Received By ________________________  
-                </p>
-                
+                <p>_____________________________________</br>Signature over printed name</p>
             </div>
             <div class="PrintButton">
                 <button type="button" class="btn btn-secondary" onclick="window.location.href = \'driver.php?driver='.$NAME.'&id='.$ID.'\';">Back</button>

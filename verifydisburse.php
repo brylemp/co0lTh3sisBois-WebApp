@@ -76,15 +76,15 @@
 
         for($i=0;$i<=1;$i++){
             $printer = new Printer($connector);
-
-            /* Name of shop */
+    
+            /* Header */
             $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
             $printer -> setJustification(Printer::JUSTIFY_CENTER);
             $printer -> text("SHUTTLE DISBURSEMENT\n RECEIPT\n");
             $printer -> selectPrintMode();
             $printer -> text("________________________________________________");
             $printer -> feed();
-
+    
             /* Items */
             $printer -> setJustification(Printer::JUSTIFY_LEFT);
             $printer -> setEmphasis(true);
@@ -98,18 +98,23 @@
             $printer -> text($total);
             $printer -> setEmphasis(false);
             $printer -> feed();
-
+    
             /* Footer */
             $printer -> feed(2);
             $printer -> setJustification(Printer::JUSTIFY_CENTER);
             $printer -> text("__________________________________\n");
-            $printer -> text("Signature over printed name\n");
+            if($i==0){
+                $printer -> text("Bursar\n");
+            }
+            else{
+                $printer -> text("Driver\n");
+            }
+            $printer -> text("(Signature over printed name)\n");
             $printer -> feed(2);
             $printer -> text("\n");
-
-            /* Cut the receipt and open the cash drawer */
+    
+            /* Cut the receipt */
             $printer -> cut();
-
             $printer -> close();
         }
         

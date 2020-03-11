@@ -52,44 +52,49 @@
     $AMOUNT = "P".$row5['Shuttle_Disbursement'];
     $total = new item('Disbursement', $AMOUNT);
 
-    
-    $printer = new Printer($connector);
+    for($i=0;$i<=1;$i++){
+        $printer = new Printer($connector);
 
-    /* Name of shop */
-    $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
-    $printer -> setJustification(Printer::JUSTIFY_CENTER);
-    $printer -> text("SHUTTLE DISBURSEMENT\n RECEIPT\n");
-    $printer -> selectPrintMode();
-    $printer -> text("________________________________________________");
-    $printer -> feed();
+        /* Header */
+        $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
+        $printer -> setJustification(Printer::JUSTIFY_CENTER);
+        $printer -> text("SHUTTLE DISBURSEMENT\n RECEIPT\n");
+        $printer -> selectPrintMode();
+        $printer -> text("________________________________________________");
+        $printer -> feed();
 
-    /* Items */
-    $printer -> setJustification(Printer::JUSTIFY_LEFT);
-    $printer -> setEmphasis(true);
-    $printer -> text(new item('', ' '));
-    $printer -> setEmphasis(false);
-    foreach ($items as $item) {
-        $printer -> text($item);
+        /* Items */
+        $printer -> setJustification(Printer::JUSTIFY_LEFT);
+        $printer -> setEmphasis(true);
+        $printer -> text(new item('', ' '));
+        $printer -> setEmphasis(false);
+        foreach ($items as $item) {
+            $printer -> text($item);
+        }
+        $printer -> setEmphasis(true);
+        $printer -> text("Shuttle\n");
+        $printer -> text($total);
+        $printer -> setEmphasis(false);
+        $printer -> feed();
+
+        /* Footer */
+        $printer -> feed(2);
+        $printer -> setJustification(Printer::JUSTIFY_CENTER);
+        $printer -> text("__________________________________\n");
+        if($i==0){
+            $printer -> text("Bursar\n");
+        }
+        else{
+            $printer -> text("Driver\n");
+        }
+        $printer -> text("(Signature over printed name)\n");
+        $printer -> feed(2);
+        $printer -> text("\n");
+
+        /* Cut the receipt */
+        $printer -> cut();
+        $printer -> close();
     }
-    $printer -> setEmphasis(true);
-    $printer -> text("Shuttle\n");
-    $printer -> text($total);
-    $printer -> setEmphasis(false);
-    $printer -> feed();
-
-    /* Footer */
-    $printer -> feed(2);
-    $printer -> setJustification(Printer::JUSTIFY_CENTER);
-    $printer -> text("__________________________________\n");
-    $printer -> text("Signature over printed name\n");
-    $printer -> feed(2);
-    $printer -> text("\n");
-
-    /* Cut the receipt and open the cash drawer */
-    $printer -> cut();
-
-    $printer -> close();
-    
     
     header("Refresh:0; url=receipt.php?ID=".$ID."&Date=".$DATE); 
     exit();
