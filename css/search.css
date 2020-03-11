@@ -4,16 +4,7 @@ table {
 }
 
 td, th{
-    width: 100px;
-}
-
-td:last-child, th:last-child{
-    width: 30px;
-}
-
-body{
-    overflow-x: auto;
-    white-space:nowrap; 
+    width: 120px;
 }
 
 .wrapper{
@@ -40,22 +31,9 @@ body{
     /* border: 1px solid aqua; */
     margin: 0 auto;
     width: 90%;
-    height: 60vh; 
+    height: 90%; 
     overflow: auto;
     overflow-y: overlay;
-}
-
-.wrapper .outertable2{
-    /* border: 1px solid aqua; */
-    margin: 0 auto;
-    width: 90%;
-    height: 70vh; 
-    overflow: auto;
-    overflow-y: overlay;
-}
-
-.wrapper .outertable2 td, th{
-    border: 1px solid #dddddd;
 }
 
 .wrapper .fakeoutertable{
@@ -66,20 +44,10 @@ body{
     height: 30px; 
 }
 
-.wrapper .fakeoutertable tr:last-child td{  
-    border: none;
-}
-
-.wrapper .fakeoutertable2{
-    /* border: 1px solid red; */
-    padding-right: 0px;
-    margin: 0 auto;
-    width: 90%;
-    height: 30px; 
-}
-
-.wrapper .fakeoutertable2 th:last-child, td:last-child{  
-    border: 1px solid #dddddd;
+.wrapper .fakeoutertable th:last-child{  
+    width: 90px;
+    padding-left: 91px;
+    border: 1px solid red;
 }
 
 .wrapper table{
@@ -97,13 +65,9 @@ body{
 
 .wrapper th:last-child, td:last-child {
     border: none;
+    width: 90px;
     padding-left: 0px;
-    padding-right: 0px;
     background-color: white ;
-}
-
-.wrapper .main .tabcontent .outertable2 tr:nth-child(even) td:last-child{
-    background-color: #dddddd;
 }
   
 .wrapper tr:nth-child(even) {
@@ -111,7 +75,6 @@ body{
 }
 
 .wrapper .main .title{
-    /* border: 1px solid black; */
     white-space: pre-wrap;      /* CSS3 */   
     white-space: -moz-pre-wrap; /* Firefox */    
     white-space: -pre-wrap;     /* Opera <7 */   
@@ -122,39 +85,23 @@ body{
     font-size: 50px;
 }
 
+.wrapper .main .date{
+    /* border: 1px solid black; */
+    padding-top: 4px;
+}
+
+.wrapper .main .status{
+    width: 100%;
+}
+
 .wrapper .main .outeroutertable .toparea{
     /* border: 1px solid black; */
-    display: flex;
+    /* display: flex; */
     margin: 0 auto;
     width: 81%;
-    text-align: left;
-    padding-top: 14px; 
-    padding-bottom: 15px; 
-    font-size: 20px;
-}
-
-.wrapper .main .outeroutertable .toparea .DriverID{
-    /* border: 1px solid black; */
-    white-space: pre-wrap;      /* CSS3 */   
-    white-space: -moz-pre-wrap; /* Firefox */    
-    white-space: -pre-wrap;     /* Opera <7 */   
-    white-space: -o-pre-wrap;   /* Opera 7 */    
-    word-wrap: break-word;      /* IE */
-    width: 29.1%;
-    padding-top: 8px;
-}
-
-.wrapper .main .outeroutertable .toparea .tab{
-    /* border: 1px solid blue; */
     text-align: center;
-    width: 58.1%;
-}
-
-.wrapper .main .outeroutertable .toparea .tab button{
-    /* border: 1px solid red; */
-    /* width: 21.1vw; */
-    /* z-index: 0; */
-    width: 100%;
+    padding-top: 20px; 
+    padding-bottom: 0px; 
 }
 
 .wrapper .main .outeroutertable .NoRecord{
@@ -165,4 +112,22 @@ body{
     padding-top: 20px; 
     padding-bottom: 20px; 
     font-size: 30px;
+}
+
+.main .outeroutertable .toparea .headerform {
+    /* border: 1px solid black; */
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.main .outeroutertable .toparea .headerform h1{
+    font-weight: lighter;
+    font-size: 50px;
+}
+
+.main .outeroutertable .toparea .headerform h2{
+    font-weight: 300;
+    font-size: 20px;
+    color: red;
+    margin-bottom: -24px;
 }
