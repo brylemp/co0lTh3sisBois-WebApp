@@ -166,7 +166,7 @@
                             </td></tr>';
                     }
                 }
-                $sql2 = "SELECT * FROM `DriverInformation` WHERE Driver_Name='$selected_driver'";
+                $sql2 = "SELECT * FROM `DriverInformation` WHERE Driver_ID=$selected_driver_ID";
                 $result2 = $conn->query($sql2);
                 $collect = 0;
                 while($row2 = $result2->fetch_assoc()) {
