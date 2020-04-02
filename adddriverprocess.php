@@ -17,10 +17,10 @@
     
     $temp = md5(time( ));
 
-    $sql1="SELECT * FROM Driver_Accounts WHERE RFID_UID='$RFIDID'";
+    $sql1="SELECT * FROM Driver_Accounts WHERE RFID_UID='$RFIDID' OR Driver_ID='$driver_id'";
     $result1 = $conn->query($sql1);
     $row1 = $result1->fetch_assoc();
-    if ($result1->num_rows == 1) {
+    if ($result1->num_rows != 0) {
         if($row1['Driver_ID']==$driver_id){
             header("Refresh:0; url=adddriverpage.php?error=1&exist=$driver_id");
         }
@@ -29,6 +29,7 @@
         }
     }
     else{
+        echo $result1->num_rows;
         $sql="INSERT INTO `Driver_Accounts`(`RFID_UID`, `Fname`, `Lname`, `Driver_ID`) VALUES ('$RFIDID','$fname','$lname','$driver_id')";
         $result = $conn->query($sql) or die($conn->error);
         header("Refresh:0; url=adddriverpage.php?error=3"); 

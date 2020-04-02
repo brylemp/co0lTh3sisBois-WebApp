@@ -19,10 +19,10 @@
     $hashed_password=password_hash($pass, PASSWORD_DEFAULT);
 
 
-    $sql1="SELECT * FROM User_Accounts WHERE UName='$user'";
+    $sql1="SELECT * FROM User_Accounts WHERE UName='$user' OR IDNum='$idnum'";
     $result1 = $conn->query($sql1);
     $row1 = $result1->fetch_assoc();
-    if ($result1->num_rows == 1) {
+    if ($result1->num_rows != 0) {
         if($row1['IDNum']==$idnum){
             header("Refresh:0; url=createuserpage.php?error=1&exist=$idnum");
         }
