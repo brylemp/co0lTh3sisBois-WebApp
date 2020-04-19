@@ -17,6 +17,7 @@
     $ID=$_GET["ID"];
     $NAME=$_GET["NAME"];
     $Date=$_GET["Date"];
+    $Source=$_GET["s"];
 
 ?>
 <!doctype html>
@@ -134,11 +135,16 @@
                 </div>
                 <p>_____________________________________</br>Signature over printed name</p>
             </div>
-            <div class="PrintButton">
-                <button type="button" class="btn btn-secondary" onclick="window.location.href = \'driver.php?driver='.$NAME.'&id='.$ID.'\';">Back</button>
-                <button type="button" class="btn btn-success" onclick="window.location.href = \'printreceipt.php?Date='.$Date.'&id='.$ID.'\';">Print</button>
-            </div>
-        </div>';
+            <div class="PrintButton">';
+        if($Source==1){
+            echo '<button type="button" class="btn btn-secondary" onclick="window.location.href = \'driver.php?driver='.$NAME.'&id='.$ID.'\';">Back</button>';
+        }
+        else{
+            echo '<button type="button" class="btn btn-secondary" onclick="window.location.href = \'dashboard.php?searchdate='.date('Y-m-j').'\';">Back</button>';
+        }
+            echo '<button type="button" class="btn btn-success" onclick="window.location.href = \'printreceipt.php?Date='.$Date.'&id='.$ID.'\';">Print</button>
+                </div>
+            </div>';  
     ?>
     
 </div>

@@ -32,6 +32,7 @@
         $T = date('h:i:sA');
         $TA = $row3['Total_Amount'];
         $DI = $row3['Driver_ID'];
+        $dri_name = explode(" ", $row3['Driver_Name']);
         $sql4 = "INSERT INTO `DriverReceipts`(`Disburse_Date`, `Date`, `Time`, `Bursar_Officer`, `Shuttle_Disbursement`, `Driver_ID`) VALUES ('$Da','$dri_date','$T','$name',$TA,'$DI')";
         $result4 = $conn->query($sql4) or die($conn->error);
 
@@ -118,17 +119,17 @@
             $printer -> close();
         }
         
-        header("Refresh:0; url=receipt.php?ID=".$dri_id."&Date=".$dri_date); 
+        header("Refresh:0; url=receipt.php?ID=".$dri_id."&NAME=".$dri_name[0]."&Date=".$dri_date."&s=".$source); 
         exit();
     }
     else{
         $sql2 = "SELECT * FROM `DriverInformation` WHERE Driver_ID='$dri_id'";
         $result2 = $conn->query($sql2);
         $row2 = $result2->fetch_assoc();
-        if($source==1){
+        if($source==0){
             header("Refresh:0; url=driver.php?driver=".$row2['Driver_Name']."&id=".$row2['Driver_ID']);
         }
-        else if($source==0){
+        else if($source==1){
             header("Refresh:0; url=dashboard.php?searchdate=".$dri_date);
         }
         

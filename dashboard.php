@@ -139,7 +139,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <input type="hidden" name="driver_id">
                                 <input type="hidden" name="driver_date">
-                                <input type="hidden" name="source" value="0">
+                                <input type="hidden" name="s" value="0">
                                 <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
                                 <input type="submit" class="btn btn-success" value="Confirm" id="button1">
                                 </form>

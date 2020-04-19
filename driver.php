@@ -70,7 +70,7 @@
 
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        if($selected_driver == $row["Fname"]){
+                        if($selected_driver == $row["Fname"] and $selected_driver_ID == $row["Driver_ID"] ){
                             echo '<li class="driver active"><a href="driver.php?driver='.$row["Fname"].'&id='.$row["Driver_ID"].'">' .$row["Fname"]. '</a></li>';
                         }
                         else{
@@ -161,6 +161,7 @@
                                     <input type="hidden" name="ID" value="'.$row['Driver_ID'].'">
                                     <input type="hidden" name="NAME" value="'.$DName[0].'">
                                     <input type="hidden" name="Date" value="'.$row['Date'].'">
+                                    <input type="hidden" name="s" value="1">
                                     <input type="submit" class="btn btn-outline-success" value=" Receipt "></input>
                                 </form>
                             </td></tr>';
@@ -214,7 +215,7 @@
             else {
                 echo "<div class='NoRecord'>No record found</div>";
             }
-        $conn->close();
+            $conn->close();
         ?>
         </div>
 
