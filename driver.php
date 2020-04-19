@@ -199,7 +199,7 @@
                         <tr>
                             <th>DATE AND TIME</th>
                             <th>PASSENGER ID</th>
-                            <th>AMOUNT CHARGED</th>
+                            <th>AMOUNT<br/>CHARGED</th>
                         </tr>
                         </table></div>
                         <div class='outertable2'>

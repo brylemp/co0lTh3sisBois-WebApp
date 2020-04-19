@@ -63,7 +63,7 @@ body{
     padding-right: 0px;
     margin: 0 auto;
     width: 90%;
-    height: 30px; 
+    height: 28px; 
 }
 
 .wrapper .fakeoutertable tr:last-child td{  
@@ -75,7 +75,7 @@ body{
     padding-right: 0px;
     margin: 0 auto;
     width: 90%;
-    height: 30px; 
+    height: 53px; 
 }
 
 .wrapper .fakeoutertable2 th:last-child, td:last-child{  
