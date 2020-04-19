@@ -156,8 +156,9 @@
         var fname = document.getElementsByName("fname");
         var lname = document.getElementsByName("lname");
         var idnum = document.getElementsByName("driver_id");
+        var rfidnum = document.getElementsByName("RFIDID");
 
-        var re_names = /^[A-Za-z]+$/;
+        var re_names = /^[a-zA-Z\s]*$/; 
 
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
             document.getElementById("registerfname").className = "form-control is-invalid";
@@ -177,6 +178,14 @@
             document.getElementById("registerdid").className = "form-control is-valid";
         }
 
+        if(isNaN(rfidnum[0].value)==true){
+            document.getElementById("registerfid").className = "form-control is-invalid";
+            document.getElementById("rfidlabel").innerHTML = "RFID Number must be in numbers"
+        }
+        else{
+            document.getElementById("registerfid").className = "form-control is-valid";
+        }
+
         //// ERROR /////
 
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
@@ -184,6 +193,10 @@
         }
         
         if(isNaN(idnum[0].value)==true){
+            return false;
+        }
+
+        if(isNaN(rfidnum[0].value)==true){
             return false;
         }
 

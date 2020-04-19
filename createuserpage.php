@@ -179,7 +179,7 @@
         var pswrd = document.getElementsByName("password");
         var usrtp = document.getElementsByName("usertype");
 
-        var re_names = /^[A-Za-z]+$/;
+        var re_names = /^[a-zA-Z\s]*$/; 
         var re_uname = /^[A-Za-z0-9]+$/;
         
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
