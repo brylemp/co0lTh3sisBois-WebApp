@@ -222,20 +222,6 @@
 </div>
 <script>
 
-// function openhist() {
-//     document.getElementById('Transactions').style.display = "none";
-//     document.getElementById('History').style.display = "block";
-//     document.getElementById('HistoryButton').className="btn btn-success";
-//     document.getElementById('TransactionButton').className="btn btn-outline-success";
-// }
-
-// function opentran() {
-//     document.getElementById('History').style.display = "none";
-//     document.getElementById('Transactions').style.display = "block";
-//     document.getElementById('HistoryButton').className="btn btn-outline-success";
-//     document.getElementById('TransactionButton').className="btn btn-success";
-// }
-
 $("#openhist").click(function(){
     document.getElementById('Transactions').style.display = "none";
     document.getElementById('History').style.display = "block";

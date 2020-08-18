@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if(isset($_SESSION["S_authorized"]) ){
+        if($_SESSION["S_authorized"]==TRUE){
+            header("Refresh:0; url=dashboard.php");
+        }
+    }
 ?>
 <!doctype html>
 <html lang="en">
