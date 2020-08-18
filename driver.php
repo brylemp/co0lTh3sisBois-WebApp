@@ -99,11 +99,9 @@
             <div class='outeroutertable'>
                 <div class='toparea'><div class='DriverID'>Driver ID: <?php echo "$selected_driver_ID";?></div> 
                 <div class='tab'>
-                    <!-- <button type='button' class='btn btn-success btn-lg' onclick='openhist();'>History</button>
-                    <button type='button' class='btn btn-success btn-lg' onclick='opentran();'>Transactions</button> -->
                     <div class="btn-group btn-group-lg btn-block" role="group">
-                        <button type="button" id="HistoryButton" class="btn btn-success" onclick='openhist();'>History</button>
-                        <button type="button" id="TransactionButton" class="btn btn-outline-success" onclick='opentran();'>Transactions</button>
+                        <button type="button" id="openhist" class="btn btn-success">History</button>
+                        <button type="button" id="opentran" class="btn btn-outline-success">Transactions</button>
                     </div>
                 </div>
             </div>
@@ -224,18 +222,33 @@
 </div>
 <script>
 
-function openhist() {
+// function openhist() {
+//     document.getElementById('Transactions').style.display = "none";
+//     document.getElementById('History').style.display = "block";
+//     document.getElementById('HistoryButton').className="btn btn-success";
+//     document.getElementById('TransactionButton').className="btn btn-outline-success";
+// }
+
+// function opentran() {
+//     document.getElementById('History').style.display = "none";
+//     document.getElementById('Transactions').style.display = "block";
+//     document.getElementById('HistoryButton').className="btn btn-outline-success";
+//     document.getElementById('TransactionButton').className="btn btn-success";
+// }
+
+$("#openhist").click(function(){
     document.getElementById('Transactions').style.display = "none";
     document.getElementById('History').style.display = "block";
-    document.getElementById('HistoryButton').className="btn btn-success";
-    document.getElementById('TransactionButton').className="btn btn-outline-success";
-}
-function opentran() {
+    document.getElementById('openhist').className="btn btn-success";
+    document.getElementById('opentran').className="btn btn-outline-success";
+});
+
+$("#opentran").click(function(){
     document.getElementById('History').style.display = "none";
     document.getElementById('Transactions').style.display = "block";
-    document.getElementById('HistoryButton').className="btn btn-outline-success";
-    document.getElementById('TransactionButton').className="btn btn-success";
-}
+    document.getElementById('openhist').className="btn btn-outline-success";
+    document.getElementById('opentran').className="btn btn-success";
+});
 
 $('#ReceiptModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
