@@ -28,6 +28,19 @@ body {
     padding-top: 50%;
 }
 
+.loginField2{
+    /* border: solid yellow; */
+}
+
+.loginAlert{
+    /* border: solid cyan; */
+    margin: 0 auto;
+    width: 40%;
+    /* height: 65px; */
+    padding-bottom: 10px;
+    text-align: center;
+}
+
 .loginText{
     /* border: solid red; */
     margin: 0 auto;

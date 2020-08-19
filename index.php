@@ -1,9 +1,17 @@
 <?php
     session_start();
-    if(isset($_SESSION["S_authorized"]) ){
-        if($_SESSION["S_authorized"]==TRUE){
-            header("Refresh:0; url=dashboard.php");
+    if(isset($_SESSION["S_authorized"])){
+        if($_SESSION["S_authorized"]){
+            header("Location: dashboard.php");
         }
+    }
+
+    if(isset($_SESSION["S_Error"])){
+        $Alert = ""; //SHOW
+        session_destroy();
+    }
+    else{
+        $Alert = "d-none";
     }
 ?>
 <!doctype html>
@@ -33,26 +41,33 @@
         <div class="col-md-8">
             <div class="loginImage">  
                 <div class="loginField">
-                    <div class="loginText">
-                        <form id="LOGINFORM" action="login.php" method="POST" autocomplete="off">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><div class="usericon"></div></span>
+                    <div class="loginField2">
+                        <div class="loginAlert">
+                            <div class="alert alert-danger <?php echo $Alert ?>" role="alert">
+                                Login Unsuccessful
                             </div>
-                            <input type="text" class="form-control" placeholder="User Name" name="username" required="required" autocomplete="none">
-                        </div>   
-                    </div>
-                    <div class="loginText">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><div class="passicon"></div></span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="Password" name="password" required="required">
-                        </div> 
-                    </div>
-                    <div class="loginButton">
-                            <div class="text-center"><input type="submit" class="btn btn-light text-center" value="Login" id="button1"></div>
-                        </form>
+                        </div>
+                        <div class="loginText">
+                            <form id="LOGINFORM" action="login.php" method="POST" autocomplete="off">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><div class="usericon"></div></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="User Name" name="username" required="required" autocomplete="none">
+                            </div>   
+                        </div>
+                        <div class="loginText">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><div class="passicon"></div></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+                            </div> 
+                        </div>
+                        <div class="loginButton">
+                                <div class="text-center"><input type="submit" class="btn btn-light text-center" value="Login" id="button1"></div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

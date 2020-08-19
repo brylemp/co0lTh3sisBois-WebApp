@@ -21,7 +21,7 @@
         exit();
     }
     else{
-        // echo "<script>err();</script>";
+        $_SESSION['S_Error']=TRUE;
         header("Refresh:0; url=index.php");
         exit();
     }
