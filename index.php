@@ -8,6 +8,7 @@
 
     if(isset($_SESSION["S_Error"])){
         $Alert = ""; //SHOW
+        session_destroy();
     }
     else{
         $Alert = "style='visibility: hidden'";
@@ -38,7 +39,7 @@
             <form class="form-container" id="LOGINFORM" action="login.php" method="POST" autocomplete="off">
                 <div class="logo"></div>
                 <div class="loginField">
-                    <div class="alert alert-danger" role="alert" <?php echo $Alert; session_destroy(); ?>>
+                    <div class="alert alert-danger" role="alert" <?php echo $Alert;?>>
                         Login Unsuccessful!
                     </div>
                     <div class="loginText">
