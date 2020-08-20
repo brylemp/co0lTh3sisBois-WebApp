@@ -1,5 +1,5 @@
 body {
-    background-image: url(../images/loginBG2.png);
+    background-image: url(../images/loginBG.png);
     background-size: cover;                
     background-repeat: no-repeat;
     background-position: center top;
@@ -16,7 +16,7 @@ body {
     background-color: #436338;
     width: 40%;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 35px;
 }
 
 .logo{
