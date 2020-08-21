@@ -139,7 +139,7 @@
                             <div class="col">
                                 <select class="form-control" name="usertype" id="registerusertype">
                                     <option disabled selected hidden>Select User Type</option>
-                                    <option value="User">Normal</option>
+                                    <option value="Bursar">Bursar</option>
                                     <option value="Admin">Admin</option>
                                 </select>
                                 <label class="errortext" id="usertypelabel"></label>

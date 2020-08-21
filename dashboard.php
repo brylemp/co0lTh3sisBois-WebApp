@@ -139,7 +139,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <input type="hidden" name="driver_id">
                                 <input type="hidden" name="driver_date">
-                                <input type="hidden" name="s" value="0">
+                                <input type="hidden" name="source" value="0">
                                 <input type="hidden" name="account_id" value="'.$_SESSION["S_IDNum"] .'">
                                 <input type="submit" class="btn btn-success" value="Confirm" id="button1">
                                 </form>
@@ -163,11 +163,32 @@
                 echo "<div class='NoRecord'>No record found</div>";
             }
         ?>
+            <div class="modal fade" id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger" role="alert">
+                            Password Incorrect
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 </body>
 <script>
+
 $('#ReceiptModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
     var driID = button.data('did') 
@@ -176,5 +197,11 @@ $('#ReceiptModal').on('show.bs.modal', function (event) {
     modal.find('input[name="driver_id"]').val(driID);
     modal.find('input[name="driver_date"]').val(driDate);
 })
+
+let searchParams = new URLSearchParams(window.location.search)
+if(searchParams.get('error')){
+    $('#ErrorModal').modal('show');
+}
+
 </script>
 </html>

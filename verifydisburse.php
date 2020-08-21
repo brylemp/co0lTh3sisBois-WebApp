@@ -126,12 +126,11 @@
         $sql2 = "SELECT * FROM `DriverInformation` WHERE Driver_ID='$dri_id'";
         $result2 = $conn->query($sql2);
         $row2 = $result2->fetch_assoc();
-        if($source==0){
-            header("Refresh:0; url=driver.php?driver=".$row2['Driver_Name']."&id=".$row2['Driver_ID']);
+        if($source==1){
+            header("Refresh:0; url=driver.php?driver=".explode(" ", $row2['Driver_Name'])[0]."&id=".$row2['Driver_ID']."&error=1");
         }
-        else if($source==1){
-            header("Refresh:0; url=dashboard.php?searchdate=".$dri_date);
+        else if($source==0){
+            header("Refresh:0; url=dashboard.php?searchdate=".$dri_date."&error=1");
         }
-        
     }
 ?>
