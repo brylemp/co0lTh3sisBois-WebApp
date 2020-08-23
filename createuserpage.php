@@ -163,6 +163,10 @@
                                 <!-- PASSWORD -->
                                 <div class="md-form">
                                     <input type="password" id="registerpaswrd" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required" placeholder="Password">
+                                    <input class="form-check-input" type="checkbox" id="inlineFormCheck" onclick=togglepass()>
+                                    <label class="form-check-label" for="inlineFormCheck">
+                                        Show/Hide Password
+                                    </label>
                                     <label class="errortext" id="pwlabel"></label>
                                 </div>
                             </div>
@@ -177,6 +181,16 @@
 </body>
 
 <script>
+
+    function togglepass() {
+        if (document.getElementById("registerpaswrd").type === "password") {
+            document.getElementById("registerpaswrd").type = "text";
+        } 
+        else {
+            document.getElementById("registerpaswrd").type = "password";
+        }
+    }
+
     function validate(){
         var fname = document.getElementsByName("firstname");
         var lname = document.getElementsByName("lastname");
