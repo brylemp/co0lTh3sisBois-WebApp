@@ -88,26 +88,32 @@
                 </div>
                 <div class="status">
                     <?php
+                        $show1 = 'd-none';
+                        $show2 = 'd-none';
+                        $show3 = 'd-none';
                         if(isset($_GET["error"])){
                             if ($_GET["error"]==3){
-                                echo '<div class="alert alert-success" role="alert">
-                                Successfully Added User!
-                                </div>';
+                                $show3 = '';
                             }
                             else if(isset($_GET["exist"])){
                                 if ($_GET["error"]==1){
-                                    echo '<div class="alert alert-danger" role="alert">
-                                    ID number '.$_GET["exist"].' already exists.
-                                    </div>';
+                                    $show1 = '';
                                 }
                                 else if ($_GET["error"]==2){
-                                    echo '<div class="alert alert-danger" role="alert">
-                                    Username '.$_GET["exist"].' already exists.
-                                    </div>';
+                                    $show2 = '';
                                 }
                             }
                         }
                     ?>
+                    <div id="Alert1" class="alert alert-success <?php echo $show3; ?>" role="alert">
+                        Successfully Added User!
+                    </div>
+                    <div id="Alert2" class="alert alert-danger <?php echo $show1; ?>" role="alert">
+                        ID number <?php echo $_GET["exist"]; ?> already exists.
+                    </div>
+                    <div id="Alert3" class="alert alert-danger <?php echo $show2; ?>" role="alert">
+                        Username <?php echo $_GET["exist"]; ?>  already exists.
+                    </div>
                 </div>
                 <div class="card-body px-lg-5 pt-0">
                     <!-- Form -->
@@ -182,6 +188,10 @@
         var re_names = /^[a-zA-Z\s]*$/; 
         var re_uname = /^[A-Za-z0-9]+$/;
         
+        document.getElementById("Alert1").className = "alert alert-danger d-none";
+        document.getElementById("Alert2").className = "alert alert-danger d-none";
+        document.getElementById("Alert3").className = "alert alert-danger d-none";
+
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
             // alert('Name must not have any numbers or special characters');
             document.getElementById("registerfname").className = "form-control is-invalid";

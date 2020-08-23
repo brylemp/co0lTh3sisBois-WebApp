@@ -108,7 +108,7 @@
                         }
                         else{
                             echo '<div class="alert alert-success" role="alert">
-                            Successfully delete user '.$_GET["error"].'.
+                            Successfully deleted user '.$_GET["error"].'.
                             </div>';
                         }
                     }
