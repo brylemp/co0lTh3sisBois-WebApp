@@ -112,42 +112,47 @@
             </div>
         <?php
             $raw = $_GET['searchthis'];
-            $search = explode(" ", $raw);
-            $sql = "SELECT * FROM Driver_Accounts WHERE (`Driver_ID` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`Fname` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`Lname` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`RFID_UID` LIKE '%".$search[0]."%' or '%".$search[1]."%') 
-            ORDER BY Driver_ID ASC";
-            
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                echo "<div class='fakeoutertable'><table>
-                        <tr>
-                            <th>Driver ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>RFID UID</th>
-                            <th></th>
-                    </tr>
-                    </table></div>
-                    <div class='outertable'>
-                    <table>";
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" .$row["Driver_ID"] ."</td>";
-                    echo "<td>" .$row["Fname"] ."</td>";
-                    echo "<td>" .$row["Lname"] ."</td>";
-                    echo "<td>" .$row["RFID_UID"] ."</td>";
-                    
-                    echo '<td><form action="driver.php">
-                                    <input type="hidden" name="driver" value="'.$row['Fname'].'">
-                                    <input type="hidden" name="id" value="'.$row['Driver_ID'].'">
-                                    <input type="submit" class="btn btn-success" value="Go to Driver"></input>
-                                </form>
-                            </td></tr>';
-
-                }
-                echo "</table></div>";    
-            } 
-            else {
+            if(Trim ($raw) === ''){
                 echo "<div class='NoRecord'>No record found</div>";
+            }
+            else{
+                $search = explode(" ", $raw);
+                $sql = "SELECT * FROM Driver_Accounts WHERE (`Driver_ID` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`Fname` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`Lname` LIKE '%".$search[0]."%' or '%".$search[1]."%') or (`RFID_UID` LIKE '%".$search[0]."%' or '%".$search[1]."%') 
+                ORDER BY Driver_ID ASC";
+                
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    echo "<div class='fakeoutertable'><table>
+                            <tr>
+                                <th>Driver ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>RFID UID</th>
+                                <th></th>
+                        </tr>
+                        </table></div>
+                        <div class='outertable'>
+                        <table>";
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr><td>" .$row["Driver_ID"] ."</td>";
+                        echo "<td>" .$row["Fname"] ."</td>";
+                        echo "<td>" .$row["Lname"] ."</td>";
+                        echo "<td>" .$row["RFID_UID"] ."</td>";
+                        
+                        echo '<td><form action="driver.php">
+                                        <input type="hidden" name="driver" value="'.$row['Fname'].'">
+                                        <input type="hidden" name="id" value="'.$row['Driver_ID'].'">
+                                        <input type="submit" class="btn btn-success" value="Go to Driver"></input>
+                                    </form>
+                                </td></tr>';
+
+                    }
+                    echo "</table></div>";    
+                } 
+                else {
+                    echo "<div class='NoRecord'>No record found</div>";
+                }
             }
         ?>
         </div>
