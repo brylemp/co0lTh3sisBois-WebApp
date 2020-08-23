@@ -163,11 +163,13 @@
                                 <!-- PASSWORD -->
                                 <div class="md-form">
                                     <input type="password" id="registerpaswrd" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password" required="required" placeholder="Password">
+                                    <label class="errortext" id="pwlabel"></label>
+                                </div>
+                                <div class="md-form" style="margin-top:-10px;margin-bottom:-20px;">
                                     <input class="form-check-input" type="checkbox" id="inlineFormCheck" onclick=togglepass()>
                                     <label class="form-check-label" for="inlineFormCheck">
                                         Show/Hide Password
                                     </label>
-                                    <label class="errortext" id="pwlabel"></label>
                                 </div>
                             </div>
                         </div> 
@@ -206,7 +208,7 @@
         document.getElementById("Alert2").className = "alert alert-danger d-none";
         document.getElementById("Alert3").className = "alert alert-danger d-none";
 
-        if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
+        if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){ //NO NUMBERS AND SPECIAL CHARACTERS
             // alert('Name must not have any numbers or special characters');
             document.getElementById("registerfname").className = "form-control is-invalid";
             document.getElementById("registerlname").className = "form-control is-invalid";
@@ -215,15 +217,17 @@
         else{
             document.getElementById("registerfname").className = "form-control is-valid";
             document.getElementById("registerlname").className = "form-control is-valid";
+            document.getElementById("fnamelabel").innerHTML = ""
         }
         
-        if(!re_uname.test(uname[0].value)){
+        if(!re_uname.test(uname[0].value)){ 
             // alert('User Name must not have any special characters');
             document.getElementById("registeruname").className = "form-control is-invalid";
             document.getElementById("unamelabel").innerHTML = "User Name must not have any special characters"
         }
         else{
             document.getElementById("registeruname").className = "form-control is-valid";
+            document.getElementById("unamelabel").innerHTML = ""
         }
 
         if(isNaN(idnum[0].value)==true){
@@ -233,6 +237,26 @@
         }
         else{
             document.getElementById("registeridnum").className = "form-control is-valid";
+            document.getElementById("idnumlabel").innerHTML = ""
+        }
+
+        if(uname[0].value.length < 5){ 
+            document.getElementById("registeruname").className = "form-control is-invalid";
+            document.getElementById("unamelabel").innerHTML = "Username must be at least 5 characters long"
+        }
+        else{
+            document.getElementById("registeruname").className = "form-control is-valid";
+            document.getElementById("unamelabel").innerHTML = ""
+        }
+
+        if(pswrd[0].value.length < 8){ 
+            // alert('password must be 8 characters long');
+            document.getElementById("registerpaswrd").className = "form-control is-invalid";
+            document.getElementById("pwlabel").innerHTML = "Password must be at least 8 characters long"
+        }
+        else{
+            document.getElementById("registerpaswrd").className = "form-control is-valid";
+            document.getElementById("pwlabel").innerHTML = ""
         }
 
         ////ERRORS////
@@ -248,6 +272,11 @@
         if(isNaN(idnum[0].value)==true){
             return false;
         }
+
+        if(pswrd[0].value.length < 8){ 
+            return false;
+        }
+        
     }
 </script>
 </html>
