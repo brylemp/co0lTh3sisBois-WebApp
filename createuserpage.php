@@ -203,7 +203,9 @@
 
         var re_names = /^[a-zA-Z\s]*$/; 
         var re_uname = /^[A-Za-z0-9]+$/;
-        
+        var re_pswrd = /^(?=.*\d)[0-9a-zA-Z]{0,100}$/;
+        var pw_errors = [];
+
         document.getElementById("Alert1").className = "alert alert-danger d-none";
         document.getElementById("Alert2").className = "alert alert-danger d-none";
         document.getElementById("Alert3").className = "alert alert-danger d-none";
@@ -249,15 +251,32 @@
             document.getElementById("unamelabel").innerHTML = ""
         }
 
+        if(!re_pswrd.test(pswrd[0].value)){ //Must Contain 1 digit
+            // alert(re_pswrd.test(pswrd[0].value));
+            document.getElementById("registerpaswrd").className = "form-control is-invalid";
+            document.getElementById("registerpaswrd").className = "form-control is-invalid";
+            pw_errors.push("Password must contain at least one digit");
+            document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
+        }
+        else{
+            pw_errors.splice(pw_errors.indexOf("Password must contain at least one digit"), 1);
+            document.getElementById("registerpaswrd").className = "form-control is-valid";
+            document.getElementById("registerpaswrd").className = "form-control is-valid";
+            document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
+        }
+
         if(pswrd[0].value.length < 8){ 
             // alert('password must be 8 characters long');
             document.getElementById("registerpaswrd").className = "form-control is-invalid";
-            document.getElementById("pwlabel").innerHTML = "Password must be at least 8 characters long"
+            pw_errors.push("Password must be at least 8 characters long");
+            document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
         }
         else{
+            pw_errors.splice(pw_errors.indexOf("Password must be at least 8 characters long"), 1);
             document.getElementById("registerpaswrd").className = "form-control is-valid";
-            document.getElementById("pwlabel").innerHTML = ""
+            document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
         }
+        console.log(pw_errors.join("<br>"));
 
         ////ERRORS////
 
@@ -273,7 +292,7 @@
             return false;
         }
 
-        if(pswrd[0].value.length < 8){ 
+        if(!re_pswrd.test(pswrd[0].value) || (pswrd[0].value.length < 8) ){ //Must Contain 1 digit
             return false;
         }
         
