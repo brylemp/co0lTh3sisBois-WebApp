@@ -292,6 +292,10 @@
             return false;
         }
 
+        if(uname[0].value.length < 5){ 
+            return false;
+        }
+
         if(!re_pswrd.test(pswrd[0].value) || (pswrd[0].value.length < 8) ){ //Must Contain 1 digit
             return false;
         }
