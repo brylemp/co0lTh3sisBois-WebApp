@@ -202,10 +202,12 @@
         var usrtp = document.getElementsByName("usertype");
 
         var re_names = /^[a-zA-Z\s]*$/; 
-        var re_uname = /^[A-Za-z0-9]+$/;
+        var re_uname = /^[a-zA-Z0-9]+$/
         var re_pswrd = /^(?=.*\d)[0-9a-zA-Z]{0,100}$/;
-        var pw_errors = [];
 
+        var pw_errors = [];
+        var un_errors = [];
+        
         document.getElementById("Alert1").className = "alert alert-danger d-none";
         document.getElementById("Alert2").className = "alert alert-danger d-none";
         document.getElementById("Alert3").className = "alert alert-danger d-none";
@@ -214,89 +216,74 @@
             // alert('Name must not have any numbers or special characters');
             document.getElementById("registerfname").className = "form-control is-invalid";
             document.getElementById("registerlname").className = "form-control is-invalid";
-            document.getElementById("fnamelabel").innerHTML = "Name must not have any numbers or special characters"
+            document.getElementById("fnamelabel").innerHTML = "Name must not have any numbers or special characters";
         }
         else{
             document.getElementById("registerfname").className = "form-control is-valid";
             document.getElementById("registerlname").className = "form-control is-valid";
-            document.getElementById("fnamelabel").innerHTML = ""
-        }
-        
-        if(!re_uname.test(uname[0].value)){ 
-            // alert('User Name must not have any special characters');
-            document.getElementById("registeruname").className = "form-control is-invalid";
-            document.getElementById("unamelabel").innerHTML = "User Name must not have any special characters"
-        }
-        else{
-            document.getElementById("registeruname").className = "form-control is-valid";
-            document.getElementById("unamelabel").innerHTML = ""
+            document.getElementById("fnamelabel").innerHTML = "";
         }
 
         if(isNaN(idnum[0].value)==true){
             // alert('ID Number must be in numbers');
-            document.getElementById("idnumlabel").innerHTML = "ID Number must be in numbers"
+            document.getElementById("idnumlabel").innerHTML = "ID Number must be in numbers";
             document.getElementById("registeridnum").className = "form-control is-invalid";
         }
         else{
             document.getElementById("registeridnum").className = "form-control is-valid";
-            document.getElementById("idnumlabel").innerHTML = ""
+            document.getElementById("idnumlabel").innerHTML = "";
+        }
+
+        if(!re_uname.test(uname[0].value)){ 
+            un_errors.push("Username must not have any special characters");
         }
 
         if(uname[0].value.length < 5){ 
-            document.getElementById("registeruname").className = "form-control is-invalid";
-            document.getElementById("unamelabel").innerHTML = "Username must be at least 5 characters long"
+            un_errors.push("Username must be at least 5 characters long");
+        }
+
+        if(un_errors.length==0){
+            document.getElementById("registeruname").className = "form-control is-valid";
+            document.getElementById("unamelabel").innerHTML = "";
         }
         else{
-            document.getElementById("registeruname").className = "form-control is-valid";
-            document.getElementById("unamelabel").innerHTML = ""
+            document.getElementById("registeruname").className = "form-control is-invalid";
+            document.getElementById("unamelabel").innerHTML = un_errors.join("<br>");
         }
 
         if(!re_pswrd.test(pswrd[0].value)){ //Must Contain 1 digit
-            // alert(re_pswrd.test(pswrd[0].value));
-            document.getElementById("registerpaswrd").className = "form-control is-invalid";
-            document.getElementById("registerpaswrd").className = "form-control is-invalid";
             pw_errors.push("Password must contain at least one digit");
-            document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
-        }
-        else{
-            pw_errors.splice(pw_errors.indexOf("Password must contain at least one digit"), 1);
-            document.getElementById("registerpaswrd").className = "form-control is-valid";
-            document.getElementById("registerpaswrd").className = "form-control is-valid";
-            document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
         }
 
         if(pswrd[0].value.length < 8){ 
-            // alert('password must be 8 characters long');
-            document.getElementById("registerpaswrd").className = "form-control is-invalid";
             pw_errors.push("Password must be at least 8 characters long");
-            document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
+        }
+
+        if(pw_errors.length==0){
+            document.getElementById("registerpaswrd").className = "form-control is-valid";
+            document.getElementById("pwlabel").innerHTML = "";
         }
         else{
-            pw_errors.splice(pw_errors.indexOf("Password must be at least 8 characters long"), 1);
-            document.getElementById("registerpaswrd").className = "form-control is-valid";
+            document.getElementById("registerpaswrd").className = "form-control is-invalid";
             document.getElementById("pwlabel").innerHTML = pw_errors.join("<br>");
         }
-        console.log(pw_errors.join("<br>"));
 
         ////ERRORS////
-
+        console.log(pw_errors);
+        console.log(un_errors);
         if(!re_names.test(fname[0].value) || !re_names.test(lname[0].value)){
-            return false;
-        }
-        
-        if(!re_uname.test(uname[0].value)){
             return false;
         }
 
         if(isNaN(idnum[0].value)==true){
             return false;
-        }
+        }        
 
-        if(uname[0].value.length < 5){ 
+        if(!re_uname.test(uname[0].value) || (uname[0].value.length < 5)){
             return false;
         }
 
-        if(!re_pswrd.test(pswrd[0].value) || (pswrd[0].value.length < 8) ){ //Must Contain 1 digit
+        if(!re_pswrd.test(pswrd[0].value) || (pswrd[0].value.length < 8)){ //Must Contain 1 digit
             return false;
         }
         
